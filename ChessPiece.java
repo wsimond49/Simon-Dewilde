@@ -21,7 +21,7 @@ public class ChessPiece
     {
         player = owner;
         this.game = game;
-        location = initialLocation;
+        location = null;
         this.game.getBoard().placePieceAt(this,initialLocation);
     }
     
@@ -116,6 +116,10 @@ public class ChessPiece
         id = newID;
     }
     
+    public void setLocation(ChessLocation newLocation){
+        location = newLocation;
+    }
+    
     /**
      * Method to move at piece on the board from one location to another (Assumes the move is legal, legality has been checked before calling)
      * 
@@ -128,9 +132,10 @@ public class ChessPiece
     {
             ChessLocation temp = new ChessLocation(this.getLocation().getRow(),this.getLocation().getCol());
             game.getBoard().placePieceAt(this,newLocation);
-            location.setLocation(newLocation.getRow(), newLocation.getCol());
+            //location.setLocation(newLocation.getRow(), newLocation.getCol());
             game.getBoard().removePiece(temp);
     }
+    
     /**
      * Method to check for shadowing of pieces and also checks if there is a piece in the final location
      * 
