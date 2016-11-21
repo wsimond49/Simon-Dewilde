@@ -17,10 +17,12 @@ public class Bishop extends ChessPiece
      */
     public Bishop(String player, ChessGame game, ChessLocation initialLocation)
     {
-        super(player,game);
-        super.getLocation().setLocation(initialLocation.getRow(),initialLocation.getCol());
-        super.setID('B');
-        game.getBoard().placePieceAt(this,initialLocation);
+        super(player,game,initialLocation);
+        if (player.equals("Black")){
+            id = 'B';
+        }else{
+            id = 'b';
+        }
     }
 
     /**

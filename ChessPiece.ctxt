@@ -1,6 +1,6 @@
 #BlueJ class context
-comment0.params=owner\ game
-comment0.target=ChessPiece(java.lang.String,\ ChessGame)
+comment0.params=owner\ game\ initialLocation
+comment0.target=ChessPiece(java.lang.String,\ ChessGame,\ ChessLocation)
 comment0.text=\r\n\ Constructor\ sets\ the\ owner\ of\ the\ piece\ (player1\ or\ player2)\ and\ associates\ the\ piece\ with\ its\ game\r\n\ \r\n\ @param\ owner\ A\ String\ that\ tells\ the\ piece\ what\ colour\ it\ is\r\n\ @param\ game\ The\ current\ game\ that\ is\ being\ played\ \r\n\ \r\n
 comment1.params=
 comment1.target=ChessGame\ getGame()

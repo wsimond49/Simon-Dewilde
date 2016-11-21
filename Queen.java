@@ -18,10 +18,12 @@ public class Queen extends ChessPiece
      */
     public Queen(String player, ChessGame game, ChessLocation initialLocation)
     {
-        super(player,game);
-         super.getLocation().setLocation(initialLocation.getRow(),initialLocation.getCol());
-        super.setID('Q');
-        game.getBoard().placePieceAt(this,initialLocation);
+        super(player,game,initialLocation);
+        if (player.equals("Black")){
+            id = 'Q';
+        }else{
+            id = 'q';
+        }
     }
 
     /**

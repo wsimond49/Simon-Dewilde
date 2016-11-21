@@ -16,10 +16,12 @@ public class Knight extends ChessPiece
      */
     public Knight(String player, ChessGame game, ChessLocation initialLocation)
     {
-        super(player,game);
-         super.getLocation().setLocation(initialLocation.getRow(),initialLocation.getCol());
-        super.setID('N');
-        game.getBoard().placePieceAt(this,initialLocation);
+        super(player,game,initialLocation);
+        if (player.equals("Black")){
+            id = 'N';
+        }else{
+            id = 'n';
+        }
     }
 
     /**

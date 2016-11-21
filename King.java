@@ -17,10 +17,12 @@ public class King extends ChessPiece
      */
     public King(String player, ChessGame game, ChessLocation initialLocation)
     {
-        super(player,game);
-         super.getLocation().setLocation(initialLocation.getRow(),initialLocation.getCol());
-        super.setID('K');
-        game.getBoard().placePieceAt(this,initialLocation);
+        super(player,game,initialLocation);
+        if (player.equals("Black")){
+            id = 'K';
+        }else{
+            id = 'k';
+        }
     }
 
     /**

@@ -17,11 +17,12 @@ public class ChessPiece
      * @param game The current game that is being played 
      * 
      */
-    public ChessPiece(String owner, ChessGame game)
+    public ChessPiece(String owner, ChessGame game, ChessLocation initialLocation)
     {
         player = owner;
         this.game = game;
-        location = new ChessLocation (0,0);
+        location = initialLocation;
+        this.game.getBoard().placePieceAt(this,initialLocation);
     }
     
     /**

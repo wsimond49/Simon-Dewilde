@@ -17,10 +17,12 @@ public class Rook extends ChessPiece
      */
     public Rook(String player, ChessGame game, ChessLocation initialLocation)
     {
-        super(player,game);
-        super.getLocation().setLocation(initialLocation.getRow(),initialLocation.getCol());
-        super.setID('R');
-        game.getBoard().placePieceAt(this,initialLocation);
+        super(player,game,initialLocation);
+        if (player.equals("Black")){
+            id = 'R';
+        }else{
+            id = 'r';
+        }
     }
 
     /**

@@ -21,10 +21,12 @@ public class Pawn extends ChessPiece
      */
     public Pawn(String player, ChessGame game, ChessLocation initialLocation)
     {
-        super(player,game);
-        super.getLocation().setLocation(initialLocation.getRow(),initialLocation.getCol());
-        super.setID('P');
-        game.getBoard().placePieceAt(this,initialLocation);
+        super(player,game,initialLocation);
+        if (player.equals("Black")){
+            id = 'P';
+        }else{
+            id = 'p';
+        }
         firstMove = true;
     }
 
@@ -39,21 +41,40 @@ public class Pawn extends ChessPiece
      */
     public void moveTo(ChessLocation newLocation)
     {
-        if (firstMove && (super.getLocation().getRow() - newLocation.getRow() < 0) && (Math.abs(super.getLocation().getRow()-newLocation.getRow()) == 1 || Math.abs(super.getLocation().getRow()-newLocation.getRow()) == 2)){
-            if(!super.checkLineOfSight(super.getLocation(),newLocation)){
-                super.moveTo(newLocation);
-                firstMove = false;
+        if(super.getPlayer().equals("Black")){
+            if (firstMove && (super.getLocation().getRow() - newLocation.getRow() < 0) && (Math.abs(super.getLocation().getRow()-newLocation.getRow()) == 1 || Math.abs(super.getLocation().getRow()-newLocation.getRow()) == 2)){
+                if(!super.checkLineOfSight(super.getLocation(),newLocation)){
+                    super.moveTo(newLocation);
+                    firstMove = false;
+                }else{
+                    System.out.println("This move is invalid due to shadowing");
+                }            
+            }else if ((Math.abs(super.getLocation().getRow() - newLocation.getRow()) == 1) && (super.getLocation().getRow() - newLocation.getRow() < 0)){
+                if(!super.checkLineOfSight(super.getLocation(),newLocation)){
+                    super.moveTo(newLocation);
+                }else{
+                    System.out.println("This move is invalid due to shadowing");
+                }
             }else{
-                System.out.println("This move is invalid due to shadowing");
-            }            
-        }else if ((Math.abs(super.getLocation().getRow() - newLocation.getRow()) == 1) && (super.getLocation().getRow() - newLocation.getRow() < 0)){
-            if(!super.checkLineOfSight(super.getLocation(),newLocation)){
-                super.moveTo(newLocation);
-            }else{
-                System.out.println("This move is invalid due to shadowing");
-            }
+                System.out.println("This move is not a valid move for a Pawn");
+            }    
         }else{
-            System.out.println("This move is not a valid move for a Pawn");
-        }        
+            if (firstMove && (super.getLocation().getRow() - newLocation.getRow() > 0) && (Math.abs(super.getLocation().getRow()-newLocation.getRow()) == 1 || Math.abs(super.getLocation().getRow()-newLocation.getRow()) == 2)){
+                if(!super.checkLineOfSight(super.getLocation(),newLocation)){
+                    super.moveTo(newLocation);
+                    firstMove = false;
+                }else{
+                    System.out.println("This move is invalid due to shadowing");
+                }            
+            }else if ((Math.abs(super.getLocation().getRow() - newLocation.getRow()) == 1) && (super.getLocation().getRow() - newLocation.getRow() > 0)){
+                if(!super.checkLineOfSight(super.getLocation(),newLocation)){
+                    super.moveTo(newLocation);
+                }else{
+                    System.out.println("This move is invalid due to shadowing");
+                }
+            }else{
+                System.out.println("This move is not a valid move for a Pawn");
+            }
+        }
     }
 }

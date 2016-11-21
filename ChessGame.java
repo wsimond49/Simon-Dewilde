@@ -31,7 +31,7 @@ public class ChessGame
         Queen Q1 = new Queen(player1, this, new ChessLocation(0,3));
         King K1 = new King(player1, this, new ChessLocation(0,4));
         Bishop B2 = new Bishop(player1, this, new ChessLocation(0,5));
-        Knight K2 = new Knight(player1, this, new ChessLocation(0,6));
+        Knight N2 = new Knight(player1, this, new ChessLocation(0,6));
         Rook R2 = new Rook(player1, this, new ChessLocation(0,7));
         Pawn P1 = new Pawn(player1, this, new ChessLocation(1,0));
         Pawn P2 = new Pawn(player1, this, new ChessLocation(1,1));
@@ -41,6 +41,23 @@ public class ChessGame
         Pawn P6 = new Pawn(player1, this, new ChessLocation(1,5));
         Pawn P7 = new Pawn(player1, this, new ChessLocation(1,6));
         Pawn P8 = new Pawn(player1, this, new ChessLocation(1,7));
+        
+        Rook R3 = new Rook(player2, this, new ChessLocation(7,0));
+        Knight N3 = new Knight(player2, this, new ChessLocation(7,1));
+        Bishop B3 = new Bishop(player2, this, new ChessLocation(7,2));
+        Queen Q2 = new Queen(player2, this, new ChessLocation(7,3));
+        King K2 = new King(player2, this, new ChessLocation(7,4));
+        Bishop B4 = new Bishop(player2, this, new ChessLocation(7,5));
+        Knight N4 = new Knight(player2, this, new ChessLocation(7,6));
+        Rook R4 = new Rook(player2, this, new ChessLocation(7,7));
+        Pawn P9 = new Pawn(player2, this, new ChessLocation(6,0));
+        Pawn P10 = new Pawn(player2, this, new ChessLocation(6,1));
+        Pawn P11 = new Pawn(player2, this, new ChessLocation(6,2));
+        Pawn P12 = new Pawn(player2, this, new ChessLocation(6,3));
+        Pawn P13 = new Pawn(player2, this, new ChessLocation(6,4));
+        Pawn P14 = new Pawn(player2, this, new ChessLocation(6,5));
+        Pawn P15 = new Pawn(player2, this, new ChessLocation(6,6));
+        Pawn P16 = new Pawn(player2, this, new ChessLocation(6,7));
         
     }
 
