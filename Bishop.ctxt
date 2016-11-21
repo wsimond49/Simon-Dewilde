@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=player\ game\ initialLocation
+comment0.target=Bishop(java.lang.String,\ ChessGame,\ ChessLocation)
+comment0.text=\r\n\ Constructor\ sets\ the\ owner,\ current\ game,\ the\ inital\ locaiton\ and\ the\ character\ ID\ of\ the\ Bishop\r\n\ \r\n\ @param\ player\ A\ String\ that\ corresponds\ the\ the\ owner\ of\ the\ Bishop\r\n\ @param\ game\ The\ ChessGame\ that\ the\ Bishop\ is\ a\ part\ of\r\n\ @param\ initialLocation\ A\ ChessLocation\ where\ the\ piece\ is\ to\ be\ placed\ at\ the\ begining\ of\ the\ game\r\n\ \r\n
+comment1.params=newLocation
+comment1.target=void\ moveTo(ChessLocation)
+comment1.text=\r\n\ The\ Bishop\ can\ only\ move\ in\ the\ diagonals\ \r\n\ Method\ checks\ if\ the\ move\ is\ legal\ and\ if\ it\ is,\ moves\ the\ Bishop\ on\ the\ board\r\n\ \r\n\ @param\ newLocation\ The\ proposed\ location\ where\ the\ Bishop\ is\ to\ be\ moved\ to\r\n\ \r\n\ @return\ Nothing.\r\n\ \r\n
+numComments=2

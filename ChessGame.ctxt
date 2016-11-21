@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=player1\ player2
+comment0.target=ChessGame(java.lang.String,\ java.lang.String)
+comment0.text=\r\n\ Constructor\ creates\ a\ new\ ChessBoard\ object\ and\ all\ of\ the\ black\ pieces\ then\ places\ them\ on\ the\ board\ at\ their\ initial\ position\r\n\ \r\n\ @param\ player1\ A\ String\ that\ corresponds\ to\ the\ colour\ of\ player1\r\n\ @param\ player2\ A\ String\ that\ corresponds\ to\ the\ colour\ of\ player2\r\n\ \r\n
+comment1.params=
+comment1.target=void\ printBoard()
+comment1.text=\r\n\ Method\ that\ prints\ out\ the\ board\ that\ is\ currently\ in\ use\r\n\ Uses\ the\ printBoard\ method\ from\ the\ ChessBoard\ class\r\n\ \r\n\ @param\ Nothing.\r\n\ \r\n\ @return\ Nothing.\r\n\ \r\n
+comment2.params=
+comment2.target=ChessBoard\ getBoard()
+comment2.text=\r\n\ Getter\ that\ returns\ the\ ChessBoard\ object\ that\ is\ currently\ being\ used\r\n\ \r\n\ @param\ Nothing.\r\n\ \r\n\ @return\ ChessBoard\ That\ is\ initalized\ in\ the\ constructor\r\n\ \r\n
+numComments=3

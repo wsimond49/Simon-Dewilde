@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.params=
+comment0.target=ChessBoard()
+comment0.text=\r\n\ Constructor\ initalizes\ the\ 2-D\ array\ with\ null\ which\ is\ used\ to\ symbolize\ that\ there\ are\ no\ pieces\ in\ that\ position\r\n\ \r\n\ @param\ Nothing.\r\n\ \r\n
+comment1.params=
+comment1.target=void\ printBoard()
+comment1.text=\r\n\ Method\ to\ print\ out\ the\ current\ chess\ board,\ it\ also\ prints\ the\ index\ along\ the\ side\ so\ users\ can\r\n\ know\ where\ the\ piece\ is\ and\ where\ they\ want\ to\ place\ the\ next\ one\r\n\ \r\n\ @param\ Nothing.\r\n\ \r\n\ @return\ Nothing.\r\n\ \r\n
+comment2.params=row\ col
+comment2.target=boolean\ isPieceAt(int,\ int)
+comment2.text=\r\n\ Method\ checks\ if\ there\ is\ a\ piece\ currently\ at\ the\ given\ location\r\n\ \r\n\ @param\ row\ Takes\ in\ the\ row\ that\ the\ user\ wants\ to\ check\ against\r\n\ @param\ col\ Takes\ in\ the\ column\ that\ the\ user\ wants\ to\ check\ against\r\n\ \r\n\ @return\ boolean\ Will\ return\ true\ if\ there\ is\ a\ piece\ at\ that\ location\r\n\ \r\n
+comment3.params=row\ col
+comment3.target=ChessPiece\ getPiece(int,\ int)
+comment3.text=\r\n\ Method\ returns\ the\ ChessPiece\ object\ at\ a\ given\ location\r\n\ \r\n\ @param\ row\ Takes\ in\ the\ row\ where\ the\ ChessPiece\ is\ located\r\n\ @param\ col\ Takes\ in\ the\ column\ where\ the\ ChessPiece\ is\ located\r\n\ \r\n\ @return\ ChessPiece\ The\ ChessPiece\ that\ is\ at\ the\ given\ row\ &\ column\r\n\ \r\n
+comment4.params=piece\ location
+comment4.target=void\ placePieceAt(ChessPiece,\ ChessLocation)
+comment4.text=\r\n\ Method\ needs\ to\ be\ called\ in\ conjunction\ with\ the\ remove\ piece\ so\ that\ after\ the\ piece\ location\ has\ been\ changed\r\n\ Its\ old\ location\ is\ the\ then\ set\ back\ to\ the\ initial\ character\r\n\ \r\n\ @param\ piece\ Needed\ to\ aquire\ the\ type\ of\ piece\ to\ place\ on\ the\ board\r\n\ @param\ location\ Used\ to\ know\ where\ to\ place\ the\ piece\ \r\n\ \r\n\ @return\ Nothing.\r\n\ \r\n
+comment5.params=location
+comment5.target=void\ removePiece(ChessLocation)
+comment5.text=\r\n\ Method\ takes\ in\ a\ location\ and\ then\ sets\ that\ space\ in\ the\ array\ to\ null\ signifying\ that\ no\ piece\ remains\ there\r\n\ \r\n\ @param\ ocation\ Takes\ in\ the\ position\ in\ the\ array\ that\ is\ to\ be\ replaced\ \r\n\ \r\n\ @return\ Nothing.\r\n\ \r\n
+numComments=6

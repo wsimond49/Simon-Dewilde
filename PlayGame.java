@@ -1,0 +1,143 @@
+import java.util.Scanner;
+import java.io.IOException;
+/**
+ * Creates the actual game and allows the user to move the black pieces around the board
+ * 
+ * @author Simon Dewilde
+ * @version 2.0
+ */
+public class PlayGame
+{
+
+    /**
+     * Constructor is empty becasue there are no instance variables and the main function is used
+     * 
+     */
+    public PlayGame(){}
+
+    /**
+     * Main function where the game is actually played.
+     * Begins by explaining that is is a demo and asks if the user wants to start a game.
+     * 
+     * Prints out the board and then propts the user for the row and column of the piece they want to move.
+     * If there is a piece there it will promt them for where they would like to move that piece to.
+     * The updated board is then printed.
+     * Cycle continues until the user quits and then prints out the final board.
+     * 
+     * @param args Unused.
+     * 
+     * @return Nothing.
+     * 
+     */
+    public static void main(String[] args)
+    {   
+        boolean continueGame = true;
+       
+        ChessGame game = new ChessGame("Black", "White");
+       
+        System.out.println("Welcome to Simon Dewilde's Chess game demo");
+        System.out.println("The following game only conatins all the pieces for one player");
+        System.out.print("To begin a game press any key except 'Q' and to quit press 'Q': ");
+        
+        int c;
+        char c1 = 'q';
+        try{
+            c = System.in.read();
+            c1 = (char)c;
+        }
+       
+        catch (IOException e){
+           
+        }
+        
+        
+        if (c1 == 'Q' || c1 == 'q')
+        {
+            continueGame = false;
+        }
+        
+        while (continueGame)
+        {
+            System.out.println("---------------------------------------------------\n");
+            game.getBoard().printBoard();
+            System.out.println("\n---------------------------------------------------");
+            
+            Scanner scanner = new Scanner (System.in);
+            String s = new String();
+            
+            boolean checkInput = true;
+            
+            while (checkInput){
+            
+                System.out.print("Please enter the row then column of the piece you would like to move (R,C) (Type Q to quit): ");
+                s = scanner.next();
+                checkInput = false;
+                
+                if (s.matches("Q") || s.matches("q")){
+                    System.out.println("You have quit");
+                    break;
+                }
+                
+                if (s.length() != 3 || !Character.isDigit(s.charAt(0)) || !Character.isDigit(s.charAt(2))){
+                    System.out.println ("This is an invalid input, try again");
+                    checkInput = true;
+                }                
+                
+            }
+            
+            if (s.matches("Q") || s.matches("q")){
+                //System.out.println("You have quit");
+                break;
+            }
+            checkInput = true;
+            
+            int currentRow = Integer.parseInt(s.charAt(0) + "");
+            int currentCol = Integer.parseInt(s.charAt(2) + "");
+            
+            if (currentRow >= 0 && currentRow <= 7 && currentCol >= 0 && currentCol <= 7){
+                if (game.getBoard().isPieceAt(currentRow,currentCol)){
+                   while(checkInput){
+                       System.out.print("Please enter the row then column of where you would like to move (R,C) (Type Q to quit): ");
+                       s = scanner.next();
+                       checkInput = false;
+                       
+                       if (s.matches("Q") || s.matches("q")){
+                           System.out.println("You have quit");
+                           break;
+                       }
+                       
+                       if (s.length() != 3 || !Character.isDigit(s.charAt(0)) || !Character.isDigit(s.charAt(2))){
+                           System.out.println ("This is an invalid input, try again");
+                           checkInput = true;
+                       }  
+                   }
+                   
+                   if (s.matches("Q") || s.matches("q")){
+                       //System.out.println("You have quit");
+                       break;
+                   }
+                   
+                   int futureRow = Integer.parseInt(s.charAt(0) + "");
+                   int futureCol = Integer.parseInt(s.charAt(2) + "");      
+                   
+                   if (futureRow >= 0 && futureRow <= 7 && futureCol >= 0 && futureCol <= 7){
+                       ChessLocation newLocation = new ChessLocation(futureRow, futureCol);
+                   
+                       game.getBoard().getPiece(currentRow,currentCol).moveTo(newLocation);
+                   }else{
+                       System.out.println("This move is out of bounds");
+                   }
+                }else{
+                    System.out.println("There is no piece there");
+                }
+            }else{
+                System.out.println("This position is out of bounds");
+            }        
+        }
+        
+        System.out.println("\n\nThank you for playing this chess demo");
+        System.out.println("Here is the final layout of your chess game");
+        game.getBoard().printBoard();
+        
+    }
+}

@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=row\ col
+comment0.target=ChessLocation(int,\ int)
+comment0.text=\r\n\ This\ constructor\ populates\ the\ row\ and\ column\ values\ with\ the\ user\ given\ position\r\n\ \r\n\ @param\ row\ Stores\ the\ row\ of\ the\ piece\r\n\ @param\ col\ Stores\ the\ column\ of\ the\ piece\r\n\ \r\n
+comment1.params=
+comment1.target=int\ getRow()
+comment1.text=\r\n\ Method\ returns\ the\ current\ row\r\n\ \r\n\ @param\ Nothing.\r\n\ \r\n\ @returns\ Row\ as\ integer\r\n\ \r\n
+comment2.params=
+comment2.target=int\ getCol()
+comment2.text=\r\n\ Method\ returns\ the\ current\ column\r\n\ \r\n\ @param\ Nothing.\r\n\ \r\n\ @returns\ Column\ as\ integer\r\n\ \r\n
+comment3.params=row\ col
+comment3.target=void\ setLocation(int,\ int)
+comment3.text=\r\n\ Method\ sets\ the\ location\ by\ taking\ the\ row\ and\ column\ as\ integers\r\n\ \r\n\ @param\ row\ Takes\ the\ new\ row\ as\ an\ integer\ and\ replaces\ the\ old\ one\r\n\ @param\ col\ Takes\ the\ new\ column\ as\ an\ integer\ and\ replaces\ the\ old\ one\r\n\ \r\n\ @return\ Nothing.\r\n\ \r\n
+numComments=4
