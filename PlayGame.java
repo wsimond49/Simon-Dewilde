@@ -4,7 +4,7 @@ import java.io.IOException;
  * Creates the actual game and allows the user to move the black pieces around the board
  * 
  * @author Simon Dewilde
- * @version 2.0
+ * @version 3.0
  */
 public class PlayGame
 {
@@ -35,8 +35,8 @@ public class PlayGame
        
         ChessGame game = new ChessGame("Black", "White");
        
-        System.out.println("Welcome to Simon Dewilde's Chess game demo");
-        System.out.println("The following game only conatins all the pieces for one player");
+        System.out.println("Welcome to Simon Dewilde's Chess game");
+        //System.out.println("The following game only conatins all the pieces for one player");
         System.out.print("To begin a game press any key except 'Q' and to quit press 'Q': ");
         
         int c;

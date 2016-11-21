@@ -2,7 +2,7 @@
  * Super Class that all of the different chess pieces inherit from
  * 
  * @author Simon Dewilde 
- * @version 2.0
+ * @version 3.0
  */
 public class ChessPiece
 {

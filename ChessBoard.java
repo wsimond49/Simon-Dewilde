@@ -2,7 +2,7 @@
  * Stores a 2-D array of ChessPieces that can be output in the shape of a chess board
  * 
  * @author Simon Dewilde
- * @version 2.0
+ * @version 3.0
  * 
  */
 public class ChessBoard

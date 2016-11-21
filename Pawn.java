@@ -3,7 +3,7 @@
  * Class that imitates the behavior of the Pawn chess piece 
  * 
  * @author Simon Dewilde 
- * @version 2.0
+ * @version 3.0
  */
 public class Pawn extends ChessPiece
 {

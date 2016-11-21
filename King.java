@@ -2,7 +2,7 @@
  * Class that imitates the behavior of the King chess piece 
  * 
  * @author Simon Dewilde
- * @version 2.0
+ * @version 3.0
  */
 public class King extends ChessPiece
 {
