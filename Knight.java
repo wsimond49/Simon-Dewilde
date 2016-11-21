@@ -33,12 +33,14 @@ public class Knight extends ChessPiece
      * @return Nothing.
      * 
      */
-    public void moveTo(ChessLocation newLocation)
+    public boolean moveTo(ChessLocation newLocation)
     {
         if (Math.abs(super.getLocation().getCol() - newLocation.getCol())*Math.abs(super.getLocation().getRow() - newLocation.getRow()) == 2){
-            super.moveTo(newLocation);           
+            super.moveTo(newLocation);  
+            return true;
         }else{
             System.out.println("This move is not a valid move for a Knight");
         }
+        return false;
     }
 }

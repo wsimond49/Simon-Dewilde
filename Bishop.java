@@ -34,16 +34,18 @@ public class Bishop extends ChessPiece
      * @return Nothing.
      * 
      */
-    public void moveTo(ChessLocation newLocation)
+    public boolean moveTo(ChessLocation newLocation)
     {
         if (Math.abs(super.getLocation().getRow() - newLocation.getRow()) == Math.abs(super.getLocation().getCol() - newLocation.getCol())){
             if(!super.checkLineOfSight(super.getLocation(),newLocation)){
                 super.moveTo(newLocation);
+                return true;
             }else{
                 System.out.println("This move is invalid due to shadowing");
             }            
         }else{
             System.out.println("This move is not a valid move for a Bishop");
         }
+        return false;
     }
 }

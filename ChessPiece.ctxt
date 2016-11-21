@@ -29,6 +29,6 @@ comment7.text=\r\n\ Mutator\ for\ the\ ID\ of\ the\ piece\r\n\ \r\n\ @param\ new
 comment8.params=newLocation
 comment8.target=void\ setLocation(ChessLocation)
 comment9.params=newLocation
-comment9.target=void\ moveTo(ChessLocation)
+comment9.target=boolean\ moveTo(ChessLocation)
 comment9.text=\r\n\ Method\ to\ move\ at\ piece\ on\ the\ board\ from\ one\ location\ to\ another\ (Assumes\ the\ move\ is\ legal,\ legality\ has\ been\ checked\ before\ calling)\r\n\ \r\n\ @param\ newLocation\ Takes\ in\ a\ new\ ChessLocation\ and\ moves\ the\ piece\ to\ that\ location\ while\ deleting\ the\ old\ location\r\n\ \r\n\ @return\ Nothing.\r\n\ \r\n
 numComments=11

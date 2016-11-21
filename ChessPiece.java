@@ -4,7 +4,7 @@
  * @author Simon Dewilde 
  * @version 3.0
  */
-public class ChessPiece
+public abstract class ChessPiece implements ChessPieceInterface
 {
     private ChessGame game;
     private String player;
@@ -128,12 +128,12 @@ public class ChessPiece
      * @return Nothing.
      * 
      */
-    public void moveTo (ChessLocation newLocation)
+    public boolean moveTo (ChessLocation newLocation)
     {
-            ChessLocation temp = new ChessLocation(this.getLocation().getRow(),this.getLocation().getCol());
-            game.getBoard().placePieceAt(this,newLocation);
-            //location.setLocation(newLocation.getRow(), newLocation.getCol());
-            game.getBoard().removePiece(temp);
+        ChessLocation temp = new ChessLocation(this.getLocation().getRow(),this.getLocation().getCol());
+        game.getBoard().placePieceAt(this,newLocation);
+        game.getBoard().removePiece(temp);
+        return true;
     }
     
     /**
