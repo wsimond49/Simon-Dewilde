@@ -36,7 +36,7 @@ public class King extends ChessPiece
      */
     public boolean moveTo(ChessLocation newLocation)
     {
-        if ((Math.abs(super.getLocation().getRow() - newLocation.getRow()) == 1) || (Math.abs(super.getLocation().getCol() - newLocation.getCol()) == 1)){
+        if (((Math.abs(super.getLocation().getRow() - newLocation.getRow()) == 1) && (Math.abs(super.getLocation().getCol() - newLocation.getCol()) == 0)) ^ ((Math.abs(super.getLocation().getCol() - newLocation.getCol()) == 1) && (Math.abs(super.getLocation().getRow() - newLocation.getRow()) == 0)) ^ ((Math.abs(super.getLocation().getRow() - newLocation.getRow()) == 1) && (Math.abs(super.getLocation().getCol() - newLocation.getCol()) == 1))){
             if(!super.checkLineOfSight(super.getLocation(),newLocation)){
                 super.moveTo(newLocation);
                 return true;
