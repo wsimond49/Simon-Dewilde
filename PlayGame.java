@@ -140,4 +140,9 @@ public class PlayGame
         game.getBoard().printBoard();
         
     }
+    
+    private static String askForInput()
+    {
+        return null;
+    }
 }

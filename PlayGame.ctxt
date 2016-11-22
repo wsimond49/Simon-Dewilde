@@ -5,4 +5,6 @@ comment0.text=\r\n\ Constructor\ is\ empty\ becasue\ there\ are\ no\ instance\ v
 comment1.params=args
 comment1.target=void\ main(java.lang.String[])
 comment1.text=\r\n\ Main\ function\ where\ the\ game\ is\ actually\ played.\r\n\ Begins\ by\ explaining\ that\ is\ is\ a\ demo\ and\ asks\ if\ the\ user\ wants\ to\ start\ a\ game.\r\n\ \r\n\ Prints\ out\ the\ board\ and\ then\ propts\ the\ user\ for\ the\ row\ and\ column\ of\ the\ piece\ they\ want\ to\ move.\r\n\ If\ there\ is\ a\ piece\ there\ it\ will\ promt\ them\ for\ where\ they\ would\ like\ to\ move\ that\ piece\ to.\r\n\ The\ updated\ board\ is\ then\ printed.\r\n\ Cycle\ continues\ until\ the\ user\ quits\ and\ then\ prints\ out\ the\ final\ board.\r\n\ \r\n\ @param\ args\ Unused.\r\n\ \r\n\ @return\ Nothing.\r\n\ \r\n
-numComments=2
+comment2.params=
+comment2.target=java.lang.String\ askForInput()
+numComments=3

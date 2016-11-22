@@ -40,6 +40,8 @@ public class King extends ChessPiece
             if(!super.checkLineOfSight(super.getLocation(),newLocation)){
                 super.moveTo(newLocation);
                 return true;
+            }else if(true){
+                
             }else{
                 System.out.println("This move is invalid due to shadowing");
             }            
