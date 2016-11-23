@@ -17,11 +17,9 @@ public class Knight extends ChessPiece
     public Knight(String player, ChessGame game, ChessLocation initialLocation)
     {
         super(player,game,initialLocation);
-        if (player.equals("Black")){
-            id = 'N';
-        }else{
-            id = 'n';
-        }
+        if (player.equals("Black"))
+        {id = 'N';}
+        else{ id = 'n';}
     }
 
     /**
@@ -42,5 +40,17 @@ public class Knight extends ChessPiece
             System.out.println("This move is not a valid move for a Knight");
         }
         return false;
+    }
+    
+    public void updateThreateningLocations()
+    {
+        for (int i = 0; i < 8; i++){
+            for (int j = 0; j < 8; j++){
+                ChessLocation check = new ChessLocation(i,j);
+                if (Math.abs(super.getLocation().getCol() - check.getCol())*Math.abs(super.getLocation().getRow() - check.getRow()) == 2){ 
+                    super.getThreateningLocations().add(check);
+                }
+            }
+        }
     }
 }

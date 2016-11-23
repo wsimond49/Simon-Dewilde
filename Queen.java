@@ -51,4 +51,9 @@ public class Queen extends ChessPiece
         }
         return false;
     }
+    
+    public void updateThreateningLocations()
+    {
+        
+    }
 }

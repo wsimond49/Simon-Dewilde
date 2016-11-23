@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 /**
  * Super Class that all of the different chess pieces inherit from
  * 
@@ -10,6 +11,7 @@ public abstract class ChessPiece implements ChessPieceInterface
     private String player;
     private ChessLocation location;
     protected char id;
+    private ArrayList<ChessLocation> threateningLocations;
     /**
      * Constructor sets the owner of the piece (player1 or player2) and associates the piece with its game
      * 
@@ -23,6 +25,7 @@ public abstract class ChessPiece implements ChessPieceInterface
         this.game = game;
         location = null;
         this.game.getBoard().placePieceAt(this,initialLocation);
+        threateningLocations = new ArrayList<ChessLocation>();
     }
     
     /**
@@ -102,6 +105,11 @@ public abstract class ChessPiece implements ChessPieceInterface
     {
         return id;
     }
+    
+    public ArrayList getThreateningLocations()
+    {
+        return threateningLocations;
+    }
 
     /**
      * Mutator for the ID of the piece
@@ -119,6 +127,8 @@ public abstract class ChessPiece implements ChessPieceInterface
     public void setLocation(ChessLocation newLocation){
         location = newLocation;
     }
+    
+    public abstract void updateThreateningLocations();
     
     /**
      * Method to move at piece on the board from one location to another (Assumes the move is legal, legality has been checked before calling)

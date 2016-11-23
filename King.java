@@ -36,7 +36,7 @@ public class King extends ChessPiece
      */
     public boolean moveTo(ChessLocation newLocation)
     {
-        if (((Math.abs(super.getLocation().getRow() - newLocation.getRow()) == 1) && (Math.abs(super.getLocation().getCol() - newLocation.getCol()) == 0)) ^ ((Math.abs(super.getLocation().getCol() - newLocation.getCol()) == 1) && (Math.abs(super.getLocation().getRow() - newLocation.getRow()) == 0)) ^ ((Math.abs(super.getLocation().getRow() - newLocation.getRow()) == 1) && (Math.abs(super.getLocation().getCol() - newLocation.getCol()) == 1))){
+        if ((Math.abs(super.getLocation().getRow() - newLocation.getRow()) < 2) && (Math.abs(super.getLocation().getCol() - newLocation.getCol()) < 2)){
             if(!super.checkLineOfSight(super.getLocation(),newLocation)){
                 super.moveTo(newLocation);
                 return true;
@@ -49,5 +49,10 @@ public class King extends ChessPiece
             System.out.println("This move is not a valid move for a King");
         }
         return false;
+    }
+    
+    public void updateThreateningLocations()
+    {
+        
     }
 }

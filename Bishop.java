@@ -48,4 +48,9 @@ public class Bishop extends ChessPiece
         }
         return false;
     }
+    
+    public void updateThreateningLocations()
+    {
+        
+    }
 }

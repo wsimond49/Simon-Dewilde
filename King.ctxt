@@ -5,4 +5,6 @@ comment0.text=\r\n\ Constructor\ sets\ the\ owner,\ current\ game,\ the\ inital\
 comment1.params=newLocation
 comment1.target=boolean\ moveTo(ChessLocation)
 comment1.text=\r\n\ The\ King\ can\ move\ in\ any\ direction\ but\ only\ one\ square\ at\ a\ time\ \r\n\ Method\ checks\ if\ the\ move\ is\ legal\ and\ if\ it\ is,\ moves\ the\ King\ on\ the\ board\r\n\ \r\n\ @param\ newLocation\ The\ proposed\ location\ where\ the\ King\ is\ to\ be\ moved\ to\r\n\ \r\n\ @return\ Nothing.\r\n\ \r\n
-numComments=2
+comment2.params=
+comment2.target=void\ updateThreateningLocations()
+numComments=3

@@ -18,11 +18,9 @@ public class Rook extends ChessPiece
     public Rook(String player, ChessGame game, ChessLocation initialLocation)
     {
         super(player,game,initialLocation);
-        if (player.equals("Black")){
-            id = 'R';
-        }else{
-            id = 'r';
-        }
+        if (player.equals("Black"))
+        {id = 'R';}
+        else{id = 'r';}
     }
 
     /**
@@ -47,5 +45,19 @@ public class Rook extends ChessPiece
             System.out.println("This move is not a valid move for a Rook");
         }
         return false;
+    }
+    
+    public void updateThreateningLocations()
+    {
+        for (int i = 0; i < 8; i++){
+            for (int j = 0; j < 8; j++){
+                ChessLocation check = new ChessLocation(i,j);
+                if ((super.getLocation().getRow() == check.getRow()) ^ (super.getLocation().getCol() == check.getCol())){
+                    if(!super.checkLineOfSight(super.getLocation(),check)){
+                        super.getThreateningLocations().add(check);
+                    }
+                }
+            }
+        }
     }
 }

@@ -22,11 +22,9 @@ public class Pawn extends ChessPiece
     public Pawn(String player, ChessGame game, ChessLocation initialLocation)
     {
         super(player,game,initialLocation);
-        if (player.equals("Black")){
-            id = 'P';
-        }else{
-            id = 'p';
-        }
+        if (player.equals("Black"))
+        {id = 'P';}
+        else{id = 'p';}
         firstMove = true;
     }
 
@@ -81,5 +79,19 @@ public class Pawn extends ChessPiece
             }
         }
         return false;
+    }
+    
+    public void updateThreateningLocations()
+    {
+        for (int i = 0; i < 8; i++){
+            for (int j = 0; j < 8; j++){
+                ChessLocation check = new ChessLocation(i,j);
+                if ((Math.abs(super.getLocation().getRow() - check.getRow()) < 2) && (Math.abs(super.getLocation().getCol() - check.getCol()) < 2) && (Math.abs(super.getLocation().getCol() - check.getCol())  == 1)){
+                    if(!super.checkLineOfSight(super.getLocation(),check)){
+                        super.getThreateningLocations().add(check);
+                    }
+                }
+            }
+        }
     }
 }
