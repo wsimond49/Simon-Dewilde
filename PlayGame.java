@@ -38,6 +38,7 @@ public class PlayGame
     private static void playGame()
     {
         boolean continueGame = true;
+        boolean valid = true;
         String currentPlayer = "White";
         String input = "";
        
@@ -60,18 +61,29 @@ public class PlayGame
             
             if (currentRow >= 0 && currentRow <= 7 && currentCol >= 0 && currentCol <= 7){
                 if (game.getBoard().isPieceAt(currentRow,currentCol)){
-                   input = getInput(false);
-                   
-                   int futureRow = Integer.parseInt(input.charAt(0) + "");
-                   int futureCol = Integer.parseInt(input.charAt(2) + "");      
-                   
-                   if (futureRow >= 0 && futureRow <= 7 && futureCol >= 0 && futureCol <= 7){
-                       ChessLocation newLocation = new ChessLocation(futureRow, futureCol);
-                   
-                       game.getBoard().getPiece(currentRow,currentCol).moveTo(newLocation, false);
-                   }else{
-                       System.out.println("This move is out of bounds");
-                   }
+                    if(game.getBoard().getPiece(currentRow, currentCol).getPlayer().equals(currentPlayer)){
+                       input = getInput(false);
+                       
+                       int futureRow = Integer.parseInt(input.charAt(0) + "");
+                       int futureCol = Integer.parseInt(input.charAt(2) + "");      
+                       
+                       if (futureRow >= 0 && futureRow <= 7 && futureCol >= 0 && futureCol <= 7){
+                           ChessLocation newLocation = new ChessLocation(futureRow, futureCol);
+                           valid = game.getBoard().getPiece(currentRow,currentCol).moveTo(newLocation, false);
+                           if(valid){
+                               game.getBoard().getPiece(futureRow,futureCol).updateThreateningLocations();
+                               if(currentPlayer.equals("White")){
+                                   currentPlayer = "Black";
+                               }else{
+                                   currentPlayer = "White";
+                               }
+                           }
+                       }else{
+                           System.out.println("This move is out of bounds");
+                       }
+                    }else{
+                        System.out.println("This is not your piece to move");
+                    }
                 }else{
                     System.out.println("There is no piece there");
                 }
