@@ -56,8 +56,10 @@ public class Pawn extends ChessPiece
                 }
                 return true;
             }
-        }else if(!isThreat){
-            System.out.println("This move is not valid");
+        }else{
+            if(!isThreat){
+                System.out.println("This move is not valid");
+            }
         } 
             
         return false;

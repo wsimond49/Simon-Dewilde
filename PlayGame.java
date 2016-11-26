@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.io.IOException;
+
 /**
  * Creates the actual game and allows the user to move the black pieces around the board
  * 
@@ -31,30 +32,19 @@ public class PlayGame
      */
     public static void main(String[] args)
     {   
+        playGame();
+    }
+    
+    private static void playGame()
+    {
         boolean continueGame = true;
+        String currentPlayer = "White";
+        String input = "";
        
         ChessGame game = new ChessGame("Black", "White");
        
         System.out.println("Welcome to Simon Dewilde's Chess game");
-        //System.out.println("The following game only conatins all the pieces for one player");
-        System.out.print("To begin a game press any key except 'Q' and to quit press 'Q': ");
-        
-        int c;
-        char c1 = 'q';
-        try{
-            c = System.in.read();
-            c1 = (char)c;
-        }
-       
-        catch (IOException e){
-           
-        }
-        
-        
-        if (c1 == 'Q' || c1 == 'q')
-        {
-            continueGame = false;
-        }
+        System.out.println("The bottom player (White) will go first");
         
         while (continueGame)
         {
@@ -62,63 +52,18 @@ public class PlayGame
             game.getBoard().printBoard();
             System.out.println("\n---------------------------------------------------");
             
-            Scanner scanner = new Scanner (System.in);
-            String s = new String();
+            getOption(game);
+            input = getInput(true);
             
-            boolean checkInput = true;
-            
-            while (checkInput){
-            
-                System.out.print("Please enter the row then column of the piece you would like to move (R,C) (Type Q to quit): ");
-                s = scanner.next();
-                checkInput = false;
-                
-                if (s.matches("Q") || s.matches("q")){
-                    System.out.println("You have quit");
-                    break;
-                }
-                
-                if (s.length() != 3 || !Character.isDigit(s.charAt(0)) || !Character.isDigit(s.charAt(2))){
-                    System.out.println ("This is an invalid input, try again");
-                    checkInput = true;
-                }                
-                
-            }
-            
-            if (s.matches("Q") || s.matches("q")){
-                //System.out.println("You have quit");
-                break;
-            }
-            checkInput = true;
-            
-            int currentRow = Integer.parseInt(s.charAt(0) + "");
-            int currentCol = Integer.parseInt(s.charAt(2) + "");
+            int currentRow = Integer.parseInt(input.charAt(0) + "");
+            int currentCol = Integer.parseInt(input.charAt(2) + "");
             
             if (currentRow >= 0 && currentRow <= 7 && currentCol >= 0 && currentCol <= 7){
                 if (game.getBoard().isPieceAt(currentRow,currentCol)){
-                   while(checkInput){
-                       System.out.print("Please enter the row then column of where you would like to move (R,C) (Type Q to quit): ");
-                       s = scanner.next();
-                       checkInput = false;
-                       
-                       if (s.matches("Q") || s.matches("q")){
-                           System.out.println("You have quit");
-                           break;
-                       }
-                       
-                       if (s.length() != 3 || !Character.isDigit(s.charAt(0)) || !Character.isDigit(s.charAt(2))){
-                           System.out.println ("This is an invalid input, try again");
-                           checkInput = true;
-                       }  
-                   }
+                   input = getInput(false);
                    
-                   if (s.matches("Q") || s.matches("q")){
-                       //System.out.println("You have quit");
-                       break;
-                   }
-                   
-                   int futureRow = Integer.parseInt(s.charAt(0) + "");
-                   int futureCol = Integer.parseInt(s.charAt(2) + "");      
+                   int futureRow = Integer.parseInt(input.charAt(0) + "");
+                   int futureCol = Integer.parseInt(input.charAt(2) + "");      
                    
                    if (futureRow >= 0 && futureRow <= 7 && futureCol >= 0 && futureCol <= 7){
                        ChessLocation newLocation = new ChessLocation(futureRow, futureCol);
@@ -134,15 +79,59 @@ public class PlayGame
                 System.out.println("This position is out of bounds");
             }        
         }
-        
-        System.out.println("\n\nThank you for playing this chess demo");
-        System.out.println("Here is the final layout of your chess game");
-        game.getBoard().printBoard();
-        
     }
     
-    private static String askForInput()
+    private static String getInput(boolean startOrEnd)
     {
-        return null;
+        Scanner scanner = new Scanner (System.in);
+        String s = new String();
+            
+        boolean checkInput = true;
+            
+        while (checkInput){
+            
+            if(startOrEnd){
+                System.out.print("Please enter the row then column of the piece you would like to move (R,C): ");
+            }else{
+                System.out.print("Please enter the row then column where you would like to move (R,C): ");
+            }
+            s = scanner.next();
+            checkInput = false;
+                
+            if (s.length() != 3 || !Character.isDigit(s.charAt(0)) || !Character.isDigit(s.charAt(2))){
+                System.out.println ("This is an invalid input, try again");
+                checkInput = true;
+            }                
+         
+        }
+        return s;
+    }
+    
+    private static void getOption (ChessGame game)
+    {    
+        boolean validInput = true;
+        while(validInput){
+            System.out.println("Would you like to Move(M), Quit(Q), or Restart(R)?");
+            Scanner scanner = new Scanner (System.in);
+            String option = scanner.next();
+            option.toLowerCase();
+            if(option.equals("q")){
+                System.out.println("\n\nThank you for playing this chess game");
+                System.out.println("Here is the final layout of your chess game");
+                game.getBoard().printBoard();
+                try {
+                    Thread.sleep(2500);
+                } catch(InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                }
+                System.exit(0);
+            }else if(option.equals("r")){
+                System.out.print("\n\n\n\n\n");
+                System.out.println("The game has been reset");
+                playGame();
+            }else if(option.equals("m")){
+                validInput = false;
+            }
+        }
     }
 }
