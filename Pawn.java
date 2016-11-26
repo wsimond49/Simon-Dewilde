@@ -37,47 +37,29 @@ public class Pawn extends ChessPiece
      * @return Nothing.
      * 
      */
-    public boolean moveTo(ChessLocation newLocation)
+    public boolean moveTo(ChessLocation newLocation, boolean isThreat)
     {
-        if(super.getPlayer().equals("Black")){
-            if (firstMove && (super.getLocation().getRow() - newLocation.getRow() < 0) && (Math.abs(super.getLocation().getRow()-newLocation.getRow()) == 1 || Math.abs(super.getLocation().getRow()-newLocation.getRow()) == 2)){
-                if(!super.checkLineOfSight(super.getLocation(),newLocation)){
-                    super.moveTo(newLocation);
+        int i = 1;
+        if(super.getPlayer().equals("Black")){i = -1;}
+        if (firstMove && (super.getLocation().getRow() - newLocation.getRow() == i ) && (Math.abs(super.getLocation().getRow()-newLocation.getRow()) == 1 || Math.abs(super.getLocation().getRow()-newLocation.getRow()) == 2)){
+            if(!super.checkLineOfSight(super.getLocation(),newLocation)){
+                if(!isThreat){
+                    super.moveTo(newLocation, false);
                     firstMove = false;
-                    return true;
-                }else{
-                    System.out.println("This move is invalid due to shadowing");
-                }            
-            }else if ((Math.abs(super.getLocation().getRow() - newLocation.getRow()) == 1) && (super.getLocation().getRow() - newLocation.getRow() < 0)){
-                if(!super.checkLineOfSight(super.getLocation(),newLocation)){
-                    super.moveTo(newLocation);
-                    return true;
-                }else{
-                    System.out.println("This move is invalid due to shadowing");
                 }
-            }else{
-                System.out.println("This move is not a valid move for a Pawn");
-            }    
-        }else{
-            if (firstMove && (super.getLocation().getRow() - newLocation.getRow() > 0) && (Math.abs(super.getLocation().getRow()-newLocation.getRow()) == 1 || Math.abs(super.getLocation().getRow()-newLocation.getRow()) == 2)){
-                if(!super.checkLineOfSight(super.getLocation(),newLocation)){
-                    super.moveTo(newLocation);
-                    firstMove = false;
-                    return true;
-                }else{
-                    System.out.println("This move is invalid due to shadowing");
-                }            
-            }else if ((Math.abs(super.getLocation().getRow() - newLocation.getRow()) == 1) && (super.getLocation().getRow() - newLocation.getRow() > 0)){
-                if(!super.checkLineOfSight(super.getLocation(),newLocation)){
-                    super.moveTo(newLocation);
-                    return true;
-                }else{
-                    System.out.println("This move is invalid due to shadowing");
+                return true;
+            }            
+        }else if ((Math.abs(super.getLocation().getRow() - newLocation.getRow()) == 1) && (super.getLocation().getRow() - newLocation.getRow() == i)){
+            if(!super.checkLineOfSight(super.getLocation(),newLocation)){
+                if(!isThreat){
+                    super.moveTo(newLocation, false);
                 }
-            }else{
-                System.out.println("This move is not a valid move for a Pawn");
+                return true;
             }
-        }
+        }else if(!isThreat){
+            System.out.println("This move is not valid");
+        } 
+            
         return false;
     }
     
@@ -86,10 +68,8 @@ public class Pawn extends ChessPiece
         for (int i = 0; i < 8; i++){
             for (int j = 0; j < 8; j++){
                 ChessLocation check = new ChessLocation(i,j);
-                if ((Math.abs(super.getLocation().getRow() - check.getRow()) < 2) && (Math.abs(super.getLocation().getCol() - check.getCol()) < 2) && (Math.abs(super.getLocation().getCol() - check.getCol())  == 1)){
-                    if(!super.checkLineOfSight(super.getLocation(),check)){
-                        super.getThreateningLocations().add(check);
-                    }
+                if (moveTo(check,true)){ 
+                    super.getThreateningLocations().add(check);
                 }
             }
         }

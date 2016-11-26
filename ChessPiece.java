@@ -5,7 +5,7 @@ import java.util.ArrayList;
  * @author Simon Dewilde 
  * @version 3.0
  */
-public abstract class ChessPiece implements ChessPieceInterface
+public abstract class ChessPiece
 {
     private ChessGame game;
     private String player;
@@ -138,7 +138,7 @@ public abstract class ChessPiece implements ChessPieceInterface
      * @return Nothing.
      * 
      */
-    public boolean moveTo (ChessLocation newLocation)
+    public boolean moveTo (ChessLocation newLocation, boolean isThreat)
     {
         ChessLocation temp = new ChessLocation(this.getLocation().getRow(),this.getLocation().getCol());
         game.getBoard().placePieceAt(this,newLocation);

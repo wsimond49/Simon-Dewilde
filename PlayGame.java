@@ -123,7 +123,7 @@ public class PlayGame
                    if (futureRow >= 0 && futureRow <= 7 && futureCol >= 0 && futureCol <= 7){
                        ChessLocation newLocation = new ChessLocation(futureRow, futureCol);
                    
-                       game.getBoard().getPiece(currentRow,currentCol).moveTo(newLocation);
+                       game.getBoard().getPiece(currentRow,currentCol).moveTo(newLocation, false);
                    }else{
                        System.out.println("This move is out of bounds");
                    }

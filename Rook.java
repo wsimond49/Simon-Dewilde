@@ -32,17 +32,17 @@ public class Rook extends ChessPiece
      * @return Nothing.
      * 
      */
-    public boolean moveTo(ChessLocation newLocation)
+    public boolean moveTo(ChessLocation newLocation, boolean isThreat)
     {
         if ((super.getLocation().getRow() == newLocation.getRow()) ^ (super.getLocation().getCol() == newLocation.getCol())){
             if(!super.checkLineOfSight(super.getLocation(),newLocation)){
-                super.moveTo(newLocation);
+                if(!isThreat){
+                    super.moveTo(newLocation, false);
+                }
                 return true;
-            }else{
-                System.out.println("This move is invalid due to shadowing");
-            }            
-        }else{
-            System.out.println("This move is not a valid move for a Rook");
+            }           
+        }else if(!isThreat){
+            System.out.println("This move is not valid");
         }
         return false;
     }
@@ -52,10 +52,8 @@ public class Rook extends ChessPiece
         for (int i = 0; i < 8; i++){
             for (int j = 0; j < 8; j++){
                 ChessLocation check = new ChessLocation(i,j);
-                if ((super.getLocation().getRow() == check.getRow()) ^ (super.getLocation().getCol() == check.getCol())){
-                    if(!super.checkLineOfSight(super.getLocation(),check)){
-                        super.getThreateningLocations().add(check);
-                    }
+                if (moveTo(check,true)){ 
+                    super.getThreateningLocations().add(check);
                 }
             }
         }

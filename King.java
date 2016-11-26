@@ -18,11 +18,9 @@ public class King extends ChessPiece
     public King(String player, ChessGame game, ChessLocation initialLocation)
     {
         super(player,game,initialLocation);
-        if (player.equals("Black")){
-            id = 'K';
-        }else{
-            id = 'k';
-        }
+        if (player.equals("Black"))
+        {id = 'K';}
+        else{id = 'k';}
     }
 
     /**
@@ -34,25 +32,30 @@ public class King extends ChessPiece
      * @return Nothing.
      * 
      */
-    public boolean moveTo(ChessLocation newLocation)
+    public boolean moveTo(ChessLocation newLocation, boolean isThreat)
     {
         if ((Math.abs(super.getLocation().getRow() - newLocation.getRow()) < 2) && (Math.abs(super.getLocation().getCol() - newLocation.getCol()) < 2)){
             if(!super.checkLineOfSight(super.getLocation(),newLocation)){
-                super.moveTo(newLocation);
-                return true;
-            }else if(true){
-                
-            }else{
-                System.out.println("This move is invalid due to shadowing");
-            }            
-        }else{
-            System.out.println("This move is not a valid move for a King");
+                if(!isThreat){
+                    super.moveTo(newLocation, false);
+                }
+                return true;              
+            }else if(!isThreat){
+                System.out.println("This move is not valid");
+            }
         }
         return false;
     }
     
     public void updateThreateningLocations()
     {
-        
+        for (int i = 0; i < 8; i++){
+            for (int j = 0; j < 8; j++){
+                ChessLocation check = new ChessLocation(i,j);
+                if (moveTo(check,true)){ 
+                    super.getThreateningLocations().add(check);
+                }
+            }
+        }
     }
 }

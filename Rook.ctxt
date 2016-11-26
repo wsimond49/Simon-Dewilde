@@ -2,8 +2,8 @@
 comment0.params=player\ game\ initialLocation
 comment0.target=Rook(java.lang.String,\ ChessGame,\ ChessLocation)
 comment0.text=\r\n\ Constructor\ sets\ the\ owner,\ current\ game,\ the\ inital\ locaiton\ and\ the\ character\ ID\ of\ the\ Rook\r\n\ \r\n\ @param\ player\ A\ String\ that\ corresponds\ the\ the\ owner\ of\ the\ Rook\r\n\ @param\ game\ The\ ChessGame\ that\ the\ Rook\ is\ a\ part\ of\r\n\ @param\ initialLocation\ A\ ChessLocation\ where\ the\ piece\ is\ to\ be\ placed\ at\ the\ begining\ of\ the\ game\r\n\ \r\n
-comment1.params=newLocation
-comment1.target=boolean\ moveTo(ChessLocation)
+comment1.params=newLocation\ isThreat
+comment1.target=boolean\ moveTo(ChessLocation,\ boolean)
 comment1.text=\r\n\ The\ Rook\ can\ only\ move\ in\ stright\ lines\ up,\ down,\ left\ or\ right\r\n\ Method\ checks\ if\ the\ move\ is\ legal\ and\ if\ it\ is,\ moves\ the\ Rook\ on\ the\ board\r\n\ \r\n\ @param\ newLocation\ The\ proposed\ location\ where\ the\ Rook\ is\ to\ be\ moved\ to\r\n\ \r\n\ @return\ Nothing.\r\n\ \r\n
 comment2.params=
 comment2.target=void\ updateThreateningLocations()

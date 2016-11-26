@@ -31,13 +31,15 @@ public class Knight extends ChessPiece
      * @return Nothing.
      * 
      */
-    public boolean moveTo(ChessLocation newLocation)
+    public boolean moveTo(ChessLocation newLocation, boolean isThreat)
     {
         if (Math.abs(super.getLocation().getCol() - newLocation.getCol())*Math.abs(super.getLocation().getRow() - newLocation.getRow()) == 2){
-            super.moveTo(newLocation);  
+            if(!isThreat){
+                super.moveTo(newLocation, false);  
+            }
             return true;
-        }else{
-            System.out.println("This move is not a valid move for a Knight");
+        }else if(!isThreat){
+            System.out.println("This move is not valid");
         }
         return false;
     }
@@ -47,7 +49,7 @@ public class Knight extends ChessPiece
         for (int i = 0; i < 8; i++){
             for (int j = 0; j < 8; j++){
                 ChessLocation check = new ChessLocation(i,j);
-                if (Math.abs(super.getLocation().getCol() - check.getCol())*Math.abs(super.getLocation().getRow() - check.getRow()) == 2){ 
+                if (moveTo(check,true)){ 
                     super.getThreateningLocations().add(check);
                 }
             }
