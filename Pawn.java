@@ -41,7 +41,7 @@ public class Pawn extends ChessPiece
     {
         int i = 1;
         if(super.getPlayer().equals("Black")){i = -1;}
-        if (firstMove && (super.getLocation().getRow() - newLocation.getRow() == i ) && (Math.abs(super.getLocation().getRow()-newLocation.getRow()) == 1 || Math.abs(super.getLocation().getRow()-newLocation.getRow()) == 2)){
+        if (firstMove  && (super.getLocation().getRow()-newLocation.getRow() == i || super.getLocation().getRow()-newLocation.getRow() == 2*i)){
             if(!super.checkLineOfSight(super.getLocation(),newLocation)){
                 if(!isThreat){
                     super.moveTo(newLocation, false);
@@ -49,7 +49,7 @@ public class Pawn extends ChessPiece
                 }
                 return true;
             }            
-        }else if ((Math.abs(super.getLocation().getRow() - newLocation.getRow()) == 1) && (super.getLocation().getRow() - newLocation.getRow() == i)){
+        }else if (super.getLocation().getRow() - newLocation.getRow() == i){
             if(!super.checkLineOfSight(super.getLocation(),newLocation)){
                 if(!isThreat){
                     super.moveTo(newLocation, false);
