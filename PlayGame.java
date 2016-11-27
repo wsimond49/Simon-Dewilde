@@ -47,6 +47,7 @@ public class PlayGame
         String input = "";
        
         ChessGame game = new ChessGame("Black", "White");
+        check(game);
        
         System.out.println("Welcome to Simon Dewilde's Chess game");
         System.out.println("The bottom player (White) will go first");
@@ -192,7 +193,7 @@ public class PlayGame
     {
         for (int i = 0; i < 8; i++){
             for (int j = 0; j < 8; j++){
-                if (game.getBoard().isPieceAt(i,j)){ 
+                if (game.getBoard().isPieceAt(i,j)){
                     game.getBoard().getPiece(i,j).updateThreateningLocations();
                 }
             }

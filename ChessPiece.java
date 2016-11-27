@@ -196,6 +196,26 @@ public abstract class ChessPiece
             else {rowInc = 1;}
         }
         
+        if(rowInc < 0 && colInc < 0){
+            rowInc = -1;
+            colInc = -1;
+        }
+        
+        if(rowInc < 0 && colInc > 0){
+            rowInc = -1;
+            colInc = 1;
+        }
+        
+        if(rowInc > 0 && colInc < 0){
+            rowInc = 1;
+            colInc = -1;
+        }
+        
+        if(rowInc > 0 && colInc > 0){
+            rowInc = 1;
+            colInc = 1;
+        }
+        
         for (int i = 1; i < numberOfSteps; i++){
             int row = start.getRow() + (rowInc * i);
             int col = start.getCol() + (colInc * i);

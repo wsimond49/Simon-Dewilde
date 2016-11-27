@@ -12,7 +12,6 @@ public class Pawn extends ChessPiece
 
     /**
      * Constructor sets the owner, current game, the inital locaiton, the first move status and the character ID of the Pawn
-     * Also sets the inital threatening locations for the pawn
      * 
      * @param player A String that corresponds the the owner of the Pawn
      * @param game The ChessGame that the Pawn is a part of
@@ -27,7 +26,6 @@ public class Pawn extends ChessPiece
         {id = 'P';}
         else{id = 'p';}
         firstMove = true;
-        updateThreateningLocations();
     }
 
     /**
@@ -45,7 +43,7 @@ public class Pawn extends ChessPiece
     {
         int i = 1;
         if(super.getPlayer().equals("Black")){i = -1;}
-        if (firstMove  && (super.getLocation().getRow()-newLocation.getRow() == i || super.getLocation().getRow()-newLocation.getRow() == 2*i)){
+        if (firstMove  && (super.getLocation().getRow()-newLocation.getRow() == i || super.getLocation().getRow()-newLocation.getRow() == 2*i) && super.getLocation().getCol()-newLocation.getCol() == 0){
             if(!super.checkLineOfSight(super.getLocation(),newLocation)){
                 if(!isThreat){
                     super.moveTo(newLocation, false);
@@ -54,7 +52,7 @@ public class Pawn extends ChessPiece
                 }
                 return false;
             }            
-        }else if (super.getLocation().getRow() - newLocation.getRow() == i){
+        }else if (super.getLocation().getRow() - newLocation.getRow() == i && super.getLocation().getCol()-newLocation.getCol() == 0){
             if(!super.checkLineOfSight(super.getLocation(),newLocation)){
                 if(!isThreat){
                     super.moveTo(newLocation, false);
@@ -62,8 +60,8 @@ public class Pawn extends ChessPiece
                 }
                 return false;
             }
-        }else if(super.getLocation().getRow() - newLocation.getRow() == i && Math.abs(super.getLocation().getCol() - newLocation.getCol()) == 1 && 
-        !super.getGame().getBoard().getPiece(newLocation.getRow(),newLocation.getCol()).getPlayer().equals(this.getPlayer())){
+        }else if(super.getLocation().getRow() - newLocation.getRow() == i && Math.abs(super.getLocation().getCol() - newLocation.getCol()) == 1 && super.getGame().getBoard().isPieceAt(newLocation.getRow(),newLocation.getCol()) && 
+            !super.getGame().getBoard().getPiece(newLocation.getRow(),newLocation.getCol()).getPlayer().equals(this.getPlayer())){
             if(!isThreat){
                 super.moveTo(newLocation, false);
             }
@@ -91,7 +89,7 @@ public class Pawn extends ChessPiece
         for (int i = 0; i < 8; i++){
             for (int j = 0; j < 8; j++){
                 ChessLocation check = new ChessLocation(i,j);
-                if (moveTo(check,true)){ 
+                if (this.moveTo(check,true)){ 
                     super.getThreateningLocations().add(check);
                 }
             }

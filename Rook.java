@@ -9,7 +9,6 @@ public class Rook extends ChessPiece
 
     /**
      * Constructor sets the owner, current game, the inital locaiton and the character ID of the Rook
-     * Also sets the inital threatening locations for the rook
      * 
      * @param player A String that corresponds the the owner of the Rook
      * @param game The ChessGame that the Rook is a part of
@@ -22,7 +21,6 @@ public class Rook extends ChessPiece
         if (player.equals("Black"))
         {id = 'R';}
         else{id = 'r';}
-        updateThreateningLocations();
     }
 
     /**
@@ -64,7 +62,7 @@ public class Rook extends ChessPiece
         for (int i = 0; i < 8; i++){
             for (int j = 0; j < 8; j++){
                 ChessLocation check = new ChessLocation(i,j);
-                if (moveTo(check,true)){ 
+                if (this.moveTo(check,true)){ 
                     super.getThreateningLocations().add(check);
                 }
             }

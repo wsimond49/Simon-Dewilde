@@ -10,7 +10,6 @@ public class Queen extends ChessPiece
 
     /**
      * Constructor sets the owner, current game, the inital locaiton and the character ID of the Queen
-     * Also sets the inital threatening locations for the queen
      * 
      * @param player A String that corresponds the the owner of the Queen
      * @param game The ChessGame that the Queen is a part of
@@ -23,7 +22,6 @@ public class Queen extends ChessPiece
         if (player.equals("Black"))
         {id = 'Q';}
         else{id = 'q';}
-        updateThreateningLocations();
     }
 
     /**
@@ -38,8 +36,11 @@ public class Queen extends ChessPiece
      */
     public boolean moveTo(ChessLocation newLocation, boolean isThreat)
     {
-        if ((Math.abs(super.getLocation().getRow() - newLocation.getRow()) == Math.abs(super.getLocation().getCol() - newLocation.getCol())) ^
-        (super.getLocation().getRow() == newLocation.getRow()) ^ (super.getLocation().getCol() == newLocation.getCol())){
+        if (super.getLocation().getRow() == newLocation.getRow() && (super.getLocation().getCol() == newLocation.getCol())){
+            return false;
+        }
+        if ((Math.abs(super.getLocation().getRow() - newLocation.getRow()) == Math.abs(super.getLocation().getCol() - newLocation.getCol())) ||
+        (super.getLocation().getRow() == newLocation.getRow()) || (super.getLocation().getCol() == newLocation.getCol())){
             if(!super.checkLineOfSight(super.getLocation(),newLocation)){
                 if(!isThreat){
                     super.moveTo(newLocation, false);
@@ -68,7 +69,7 @@ public class Queen extends ChessPiece
         for (int i = 0; i < 8; i++){
             for (int j = 0; j < 8; j++){
                 ChessLocation check = new ChessLocation(i,j);
-                if (moveTo(check,true)){ 
+                if (this.moveTo(check,true)){
                     super.getThreateningLocations().add(check);
                 }
             }

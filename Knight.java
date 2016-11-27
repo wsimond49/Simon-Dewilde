@@ -8,7 +8,6 @@ public class Knight extends ChessPiece
 {
     /**
      * Constructor sets the owner, current game, the inital locaiton and the character ID of the Knight
-     * Also sets the inital threatening locations for the knight
      * 
      * @param player A String that corresponds the the owner of the Knight
      * @param game The ChessGame that the Knight is a part of
@@ -21,7 +20,6 @@ public class Knight extends ChessPiece
         if (player.equals("Black"))
         {id = 'N';}
         else{ id = 'n';}
-        updateThreateningLocations();
     }
 
     /**
@@ -62,7 +60,7 @@ public class Knight extends ChessPiece
         for (int i = 0; i < 8; i++){
             for (int j = 0; j < 8; j++){
                 ChessLocation check = new ChessLocation(i,j);
-                if (moveTo(check,true)){ 
+                if (this.moveTo(check,true)){ 
                     super.getThreateningLocations().add(check);
                 }
             }
