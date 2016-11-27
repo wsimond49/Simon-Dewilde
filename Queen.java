@@ -22,6 +22,7 @@ public class Queen extends ChessPiece
         if (player.equals("Black"))
         {id = 'Q';}
         else{id = 'q';}
+        updateThreateningLocations();
     }
 
     /**

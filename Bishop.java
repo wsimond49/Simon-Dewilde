@@ -21,6 +21,7 @@ public class Bishop extends ChessPiece
         if (player.equals("Black"))
         {id = 'B';}
         else{id = 'b';}
+        updateThreateningLocations();
     }
 
     /**

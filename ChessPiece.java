@@ -157,103 +157,30 @@ public abstract class ChessPiece
      */
     public boolean checkLineOfSight(ChessLocation start, ChessLocation end)
     {
-        boolean check = false;
+        boolean returnValue = false;
+        int rowInc = end.getRow() - start.getRow();
+        int colInc = end.getCol() - start.getCol();
+        int numberOfSteps = Math.max(Math.abs(rowInc), Math.abs(colInc));
         
-        //If the rows are the same then the piece is moving vetically (also checks for up or down)
-        if (start.getRow() == end.getRow()){
-            int constantRow = start.getRow();
-            if (start.getCol() - end.getCol() < 0){
-                for (int i = start.getCol()+1; i <= end.getCol(); i++){
-                    check = game.getBoard().isPieceAt(constantRow, i);
-                    if (check != false){
-                        return check;
-                    }
-                }
-            }else{
-                for (int i = start.getCol()-1; i <= end.getCol(); i--){
-                    check = game.getBoard().isPieceAt(constantRow, i);
-                    if (check != false){
-                        return check;
-                    }
-                }
-            }
-        //If the columns are the same then the piece is moving horizontally (also checks left or right)
-        }else if (start.getCol() == end.getCol()){
-            int constantCol = start.getCol();
-            if (start.getRow() - end.getRow() < 0){
-                for (int i = start.getRow()+1; i <= end.getRow(); i++){
-                    check = game.getBoard().isPieceAt(i,constantCol);
-                    if (check != false){
-                        return check;
-                    }
-                }
-            }else{
-                for (int i = start.getRow()-1; i <= end.getRow(); i--){
-                    check = game.getBoard().isPieceAt(i,constantCol);
-                    if (check != false){
-                        return check;
-                    }
-                }
-            }
-        //If the piece is going on a diagonal it will check whichever quadrent the piece is moving into
-        }else if (Math.abs(start.getRow() - end.getRow()) == Math.abs(start.getCol() - end.getCol())){
-           int i = start.getRow();
-           int j = start.getCol();
-           if (start.getRow() > end.getRow()){
-               if (start.getCol() > end.getCol()){
-                   //q2
-                   i--;
-                   j--;
-                   while (j < end.getCol()){
-                       check = game.getBoard().isPieceAt(i,j);
-                       if (check != false){
-                           return check;
-                       }
-                       i--;
-                       j--;
-                   }
-               }else{
-                   //q1
-                   i--;
-                   j++;
-                   while (j < end.getCol()){
-                       check = game.getBoard().isPieceAt(i,j);
-                       if (check != false){
-                           return check;
-                       }
-                       i--;
-                       j++;
-                   }
-                  
-               }
-           }else{
-               if (start.getCol() > end.getCol()){
-                   //q3
-                   i++;
-                   j--;
-                   while (j < end.getCol()){
-                       check = game.getBoard().isPieceAt(i,j);
-                       if (check != false){
-                           return check;
-                       }
-                       i++;
-                       j--;
-                   }
-               }else{
-                   //q4
-                   i++;
-                   j++;
-                   while (j < end.getCol()){
-                       check = game.getBoard().isPieceAt(i,j);
-                       if (check != false){
-                           return check;
-                       }
-                       i++;
-                       j++;
-                   }
-               }
-           }
+        if(rowInc == 0){
+            if (colInc < 0){colInc = -1;}
+            else {colInc = 1;}
         }
-        return check;
+        if(colInc == 0){
+            if (rowInc < 0){rowInc = -1;}
+            else {rowInc = 1;}
+        }
+        
+        for (int i = 1; i < numberOfSteps; i++){
+            int row = start.getRow() + (rowInc * i);
+            int col = start.getCol() + (colInc * i);
+            if(game.getBoard().isPieceAt(row, col)){
+                returnValue = true;
+            }
+        }
+        if(game.getBoard().isPieceAt(end.getRow(), end.getCol()) && game.getBoard().getPiece(end.getRow(), end.getCol()).getPlayer().equals(player)){
+            returnValue = true;
+        }
+        return returnValue;
     }
 }

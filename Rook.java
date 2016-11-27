@@ -21,6 +21,7 @@ public class Rook extends ChessPiece
         if (player.equals("Black"))
         {id = 'R';}
         else{id = 'r';}
+        updateThreateningLocations();
     }
 
     /**

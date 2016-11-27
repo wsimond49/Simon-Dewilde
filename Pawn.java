@@ -26,6 +26,7 @@ public class Pawn extends ChessPiece
         {id = 'P';}
         else{id = 'p';}
         firstMove = true;
+        updateThreateningLocations();
     }
 
     /**

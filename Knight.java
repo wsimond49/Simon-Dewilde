@@ -20,6 +20,7 @@ public class Knight extends ChessPiece
         if (player.equals("Black"))
         {id = 'N';}
         else{ id = 'n';}
+        updateThreateningLocations();
     }
 
     /**

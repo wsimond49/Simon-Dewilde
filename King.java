@@ -21,6 +21,7 @@ public class King extends ChessPiece
         if (player.equals("Black"))
         {id = 'K';}
         else{id = 'k';}
+        updateThreateningLocations();
     }
 
     /**
