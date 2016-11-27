@@ -71,7 +71,7 @@ public class PlayGame
                            ChessLocation newLocation = new ChessLocation(futureRow, futureCol);
                            valid = game.getBoard().getPiece(currentRow,currentCol).moveTo(newLocation, false);
                            if(valid){
-                               game.getBoard().getPiece(futureRow,futureCol).updateThreateningLocations();
+                               check(game);
                                if(currentPlayer.equals("White")){
                                    currentPlayer = "Black";
                                }else{
@@ -144,6 +144,32 @@ public class PlayGame
                 playGame();
             }else if(option.equals("m")){
                 validInput = false;
+            }
+        }
+    }
+    
+    private static void check (ChessGame game)
+    {
+        for (int i = 0; i < 8; i++){
+            for (int j = 0; j < 8; j++){
+                if (game.getBoard().isPieceAt(i,j)){ 
+                    game.getBoard().getPiece(i,j).updateThreateningLocations();
+                }
+            }
+        }
+        for (int i = 0; i < 8; i++){
+            for (int j = 0; j < 8; j++){
+                if (game.getBoard().isPieceAt(i,j)){ 
+                    for (ChessLocation kingCheck : game.getBoard().getPiece(i,j).getThreateningLocations()){
+                        if (game.getBoard().isPieceAt(kingCheck.getRow(),kingCheck.getCol())){
+                            if (game.getBoard().getPiece(kingCheck.getRow(), kingCheck.getCol()).getID() == 'K'){
+                                System.out.println("The white king is in check by the piece at " + i + "," + j);
+                            }else if (game.getBoard().getPiece(kingCheck.getRow(), kingCheck.getCol()).getID() == 'k'){
+                                System.out.println("The black king is in check by the piece at " + i + "," + j);
+                            }
+                        }
+                    }
+                }
             }
         }
     }

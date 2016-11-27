@@ -76,6 +76,7 @@ public class Pawn extends ChessPiece
     
     public void updateThreateningLocations()
     {
+        super.getThreateningLocations().clear();
         for (int i = 0; i < 8; i++){
             for (int j = 0; j < 8; j++){
                 ChessLocation check = new ChessLocation(i,j);

@@ -34,9 +34,10 @@ public class Knight extends ChessPiece
      */
     public boolean moveTo(ChessLocation newLocation, boolean isThreat)
     {
-        if (Math.abs(super.getLocation().getCol() - newLocation.getCol())*Math.abs(super.getLocation().getRow() - newLocation.getRow()) == 2){
-            if(!isThreat){
-                super.moveTo(newLocation, false);  
+        if (Math.abs(super.getLocation().getCol() - newLocation.getCol())*Math.abs(super.getLocation().getRow() - newLocation.getRow()) == 2 ){
+            if(!isThreat &&
+            (super.getGame().getBoard().isPieceAt(newLocation.getRow(), newLocation.getCol()) || !super.getGame().getBoard().getPiece(newLocation.getRow(), newLocation.getCol()).getPlayer().equals(this.getPlayer()))){
+                super.moveTo(newLocation, false);
             }
             return true;
         }else if(!isThreat){
@@ -47,6 +48,7 @@ public class Knight extends ChessPiece
     
     public void updateThreateningLocations()
     {
+        super.getThreateningLocations().clear();
         for (int i = 0; i < 8; i++){
             for (int j = 0; j < 8; j++){
                 ChessLocation check = new ChessLocation(i,j);
