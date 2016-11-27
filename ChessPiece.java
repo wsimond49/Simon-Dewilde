@@ -106,7 +106,7 @@ public abstract class ChessPiece
         return id;
     }
     
-    public ArrayList getThreateningLocations()
+    public ArrayList<ChessLocation> getThreateningLocations()
     {
         return threateningLocations;
     }

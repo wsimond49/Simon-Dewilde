@@ -46,16 +46,24 @@ public class Pawn extends ChessPiece
                 if(!isThreat){
                     super.moveTo(newLocation, false);
                     firstMove = false;
+                    return true;
                 }
-                return true;
+                return false;
             }            
         }else if (super.getLocation().getRow() - newLocation.getRow() == i){
             if(!super.checkLineOfSight(super.getLocation(),newLocation)){
                 if(!isThreat){
                     super.moveTo(newLocation, false);
+                    return true;
                 }
-                return true;
+                return false;
             }
+        }else if(super.getLocation().getRow() - newLocation.getRow() == i && Math.abs(super.getLocation().getCol() - newLocation.getCol()) == 1 && 
+        !super.getGame().getBoard().getPiece(newLocation.getRow(),newLocation.getCol()).getPlayer().equals(this.getPlayer())){
+            if(!isThreat){
+                super.moveTo(newLocation, false);
+            }
+            return true;            
         }else{
             if(!isThreat){
                 System.out.println("This move is not valid");
