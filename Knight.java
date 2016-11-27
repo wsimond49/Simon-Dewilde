@@ -34,9 +34,9 @@ public class Knight extends ChessPiece
      */
     public boolean moveTo(ChessLocation newLocation, boolean isThreat)
     {
-        if (Math.abs(super.getLocation().getCol() - newLocation.getCol())*Math.abs(super.getLocation().getRow() - newLocation.getRow()) == 2 ){
-            if(!isThreat &&
-            (super.getGame().getBoard().isPieceAt(newLocation.getRow(), newLocation.getCol()) || !super.getGame().getBoard().getPiece(newLocation.getRow(), newLocation.getCol()).getPlayer().equals(this.getPlayer()))){
+        if (Math.abs(super.getLocation().getCol() - newLocation.getCol())*Math.abs(super.getLocation().getRow() - newLocation.getRow()) == 2 
+        && (!super.getGame().getBoard().isPieceAt(newLocation.getRow(), newLocation.getCol()) || !super.getGame().getBoard().getPiece(newLocation.getRow(), newLocation.getCol()).getPlayer().equals(this.getPlayer()))){
+            if(!isThreat){
                 super.moveTo(newLocation, false);
             }
             return true;

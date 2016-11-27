@@ -2,7 +2,7 @@
  * Initalizes the game and sets up the board with all the pieces on one side, also provides accesors for PlayGame
  * 
  * @author Simon Dewilde 
- * @version 2.0
+ * @version 3.0
  * 
  */
 public class ChessGame

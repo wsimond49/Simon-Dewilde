@@ -36,9 +36,8 @@ public class Queen extends ChessPiece
      */
     public boolean moveTo(ChessLocation newLocation, boolean isThreat)
     {
-       if ((Math.abs(super.getLocation().getRow() - newLocation.getRow()) == Math.abs(super.getLocation().getCol() - newLocation.getCol())) ^
-       (super.getLocation().getRow() == newLocation.getRow()) ^
-       (super.getLocation().getCol() == newLocation.getCol())){
+        if ((Math.abs(super.getLocation().getRow() - newLocation.getRow()) == Math.abs(super.getLocation().getCol() - newLocation.getCol())) ^
+        (super.getLocation().getRow() == newLocation.getRow()) ^ (super.getLocation().getCol() == newLocation.getCol())){
             if(!super.checkLineOfSight(super.getLocation(),newLocation)){
                 if(!isThreat){
                     super.moveTo(newLocation, false);

@@ -52,8 +52,9 @@ public class PlayGame
             System.out.println("---------------------------------------------------\n");
             game.getBoard().printBoard();
             System.out.println("\n---------------------------------------------------");
+            System.out.println("It is " + currentPlayer + "s turn to move");
             
-            getOption(game);
+            getOption(game, "");
             input = getInput(true);
             
             int currentRow = Integer.parseInt(input.charAt(0) + "");
@@ -69,6 +70,11 @@ public class PlayGame
                        
                        if (futureRow >= 0 && futureRow <= 7 && futureCol >= 0 && futureCol <= 7){
                            ChessLocation newLocation = new ChessLocation(futureRow, futureCol);
+                           if(game.getBoard().isPieceAt(futureRow, futureCol) && (game.getBoard().getPiece(futureRow, futureCol).getID() == 'K' || game.getBoard().getPiece(futureRow, futureCol).getID() == 'k')){
+                               game.getBoard().getPiece(currentRow,currentCol).moveTo(newLocation, false);
+                               System.out.println(currentPlayer + " is the winner!");
+                               getOption(game, "q");
+                           }
                            valid = game.getBoard().getPiece(currentRow,currentCol).moveTo(newLocation, false);
                            if(valid){
                                check(game);
@@ -119,13 +125,18 @@ public class PlayGame
         return s;
     }
     
-    private static void getOption (ChessGame game)
+    private static void getOption (ChessGame game, String quitCheck)
     {    
         boolean validInput = true;
+        String option = new String();
         while(validInput){
-            System.out.println("Would you like to Move(M), Quit(Q), or Restart(R)?");
-            Scanner scanner = new Scanner (System.in);
-            String option = scanner.next();
+            if (quitCheck.equals("q")){
+                 option = quitCheck;
+            }else{
+                System.out.println("Would you like to Move(M), Quit(Q), or Restart(R)?");
+                Scanner scanner = new Scanner (System.in);
+                option = scanner.next();
+            }
             option.toLowerCase();
             if(option.equals("q")){
                 System.out.println("\n\nThank you for playing this chess game");

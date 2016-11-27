@@ -166,6 +166,7 @@ public abstract class ChessPiece
             if (colInc < 0){colInc = -1;}
             else {colInc = 1;}
         }
+        
         if(colInc == 0){
             if (rowInc < 0){rowInc = -1;}
             else {rowInc = 1;}
@@ -178,9 +179,11 @@ public abstract class ChessPiece
                 returnValue = true;
             }
         }
-        if(game.getBoard().isPieceAt(end.getRow(), end.getCol()) && game.getBoard().getPiece(end.getRow(), end.getCol()).getPlayer().equals(player)){
+        
+        if(game.getBoard().isPieceAt(end.getRow(), end.getCol()) && game.getBoard().getPiece(end.getRow(), end.getCol()).getPlayer().equals(this.player)){
             returnValue = true;
         }
+        
         return returnValue;
     }
 }
