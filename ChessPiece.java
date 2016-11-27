@@ -13,7 +13,7 @@ public abstract class ChessPiece
     protected char id;
     private ArrayList<ChessLocation> threateningLocations;
     /**
-     * Constructor sets the owner of the piece (player1 or player2) and associates the piece with its game
+     * Constructor sets the owner of the piece (Black or White) and associates the piece with its game
      * 
      * @param owner A String that tells the piece what colour it is
      * @param game The current game that is being played 
@@ -106,6 +106,14 @@ public abstract class ChessPiece
         return id;
     }
     
+    /**
+     * Accessor for the ArrayList of the threatening locations
+     * 
+     * @param Nothing.
+     * 
+     * @return ArrayList<ChessLocation> the ArrayList that holds all the locations a piece threatens
+     * 
+     */
     public ArrayList<ChessLocation> getThreateningLocations()
     {
         return threateningLocations;
@@ -124,10 +132,26 @@ public abstract class ChessPiece
         id = newID;
     }
     
+    /**
+     * Mutator for the location of the piece (Only called if bounds have been checked already)
+     * 
+     * @param newLocation Takes in the ChessLocation that the piece should be changed to 
+     * 
+     * @return Nothing.
+     * 
+     */
     public void setLocation(ChessLocation newLocation){
         location = newLocation;
     }
     
+    /**
+     * Abstract method that all subclasses will implement
+     * 
+     * @param Nothing.
+     * 
+     * @return Nothing.
+     * 
+     */
     public abstract void updateThreateningLocations();
     
     /**
@@ -147,7 +171,7 @@ public abstract class ChessPiece
     }
     
     /**
-     * Method to check for shadowing of pieces and also checks if there is a piece in the final location
+     * Method to check for shadowing of pieces and also checks if there is a piece in the final location is of the opponents color
      * 
      * @param start The starting ChessLocation of the piece
      * @param end The proposed ending ChessLocation of the piece

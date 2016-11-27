@@ -9,6 +9,7 @@ public class King extends ChessPiece
 
     /**
      * Constructor sets the owner, current game, the inital locaiton and the character ID of the King
+     * Also sets the inital threatening locations for the rook
      * 
      * @param player A String that corresponds the the owner of the King
      * @param game The ChessGame that the King is a part of
@@ -28,9 +29,10 @@ public class King extends ChessPiece
      * The King can move in any direction but only one square at a time 
      * Method checks if the move is legal and if it is, moves the King on the board
      * 
-     * @param newLocation The proposed location where the King is to be moved to
+     * @param newLocation The proposed ChessLocation where the King is to be moved to
+     * @param isThreat if isThreat is true the move is not actually taken just the return value is wanted
      * 
-     * @return Nothing.
+     * @return boolean true if the move was successful
      * 
      */
     public boolean moveTo(ChessLocation newLocation, boolean isThreat)
@@ -48,6 +50,14 @@ public class King extends ChessPiece
         return false;
     }
     
+    /**
+     * Fills the threateningLocations ArrayList with locations that the rook threatens
+     * 
+     * @param Nothing.
+     * 
+     * @return Nothing.
+     * 
+     */
     public void updateThreateningLocations()
     {
         super.getThreateningLocations().clear();

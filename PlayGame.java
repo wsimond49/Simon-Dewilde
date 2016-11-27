@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.io.IOException;
 
 /**
- * Creates the actual game and allows the user to move the black pieces around the board
+ * Creates the actual game and allows it to be played
  * 
  * @author Simon Dewilde
  * @version 3.0
@@ -17,13 +17,7 @@ public class PlayGame
     public PlayGame(){}
 
     /**
-     * Main function where the game is actually played.
-     * Begins by explaining that is is a demo and asks if the user wants to start a game.
-     * 
-     * Prints out the board and then propts the user for the row and column of the piece they want to move.
-     * If there is a piece there it will promt them for where they would like to move that piece to.
-     * The updated board is then printed.
-     * Cycle continues until the user quits and then prints out the final board.
+     * Calls playGame method to begin the player interface
      * 
      * @param args Unused.
      * 
@@ -35,6 +29,16 @@ public class PlayGame
         playGame();
     }
     
+    /**
+     * Welcomes the user
+     * Rotates between players asking if they want to move, reset or quit
+     * Facilitates the moving and changing players
+     * 
+     * @param Nothing.
+     * 
+     * @return Nothing.
+     * 
+     */
     private static void playGame()
     {
         boolean continueGame = true;
@@ -99,6 +103,14 @@ public class PlayGame
         }
     }
     
+    /**
+     * Asks for either a 'to' or 'from' coordinate set and gets the result as a string
+     * 
+     * @param startOrEnd boolean to know if they are being asked for a 'to' or 'from'
+     * 
+     * @return String the contents of the scan if they are valid, otherwise they are prompted again
+     * 
+     */
     private static String getInput(boolean startOrEnd)
     {
         Scanner scanner = new Scanner (System.in);
@@ -125,6 +137,15 @@ public class PlayGame
         return s;
     }
     
+    /**
+     * Asks the user if they want to move, quit or reset and will do the actual reset or quit if that is called
+     * 
+     * @param game used to print out the final board when the user quits
+     * @param quitCheck if the king is captures then a "q" is passed and it defults to the quit case
+     * 
+     * @return Nothing.
+     * 
+     */
     private static void getOption (ChessGame game, String quitCheck)
     {    
         boolean validInput = true;
@@ -159,6 +180,14 @@ public class PlayGame
         }
     }
     
+    /**
+     * Updates the threatening locations of all pieces and checks if the king is in any of those ArryLists
+     * 
+     * @param game used to get pieces on the board
+     * 
+     * @return Nothing.
+     * 
+     */
     private static void check (ChessGame game)
     {
         for (int i = 0; i < 8; i++){

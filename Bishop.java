@@ -9,6 +9,7 @@ public class Bishop extends ChessPiece
 
     /**
      * Constructor sets the owner, current game, the inital locaiton and the character ID of the Bishop
+     * Also sets the inital threatening locations for the bishop
      * 
      * @param player A String that corresponds the the owner of the Bishop
      * @param game The ChessGame that the Bishop is a part of
@@ -28,9 +29,10 @@ public class Bishop extends ChessPiece
      * The Bishop can only move in the diagonals 
      * Method checks if the move is legal and if it is, moves the Bishop on the board
      * 
-     * @param newLocation The proposed location where the Bishop is to be moved to
+     * @param newLocation The proposed ChessLocation where the Bishop is to be moved to
+     * @param isThreat if isThreat is true the move is not actually taken just the return value is wanted
      * 
-     * @return Nothing.
+     * @return boolean true if the move was successful
      * 
      */
     public boolean moveTo(ChessLocation newLocation, boolean isThreat)
@@ -50,6 +52,14 @@ public class Bishop extends ChessPiece
         return false;
     }
     
+    /**
+     * Fills the threateningLocations ArrayList with locations that the bishop threatens
+     * 
+     * @param Nothing.
+     * 
+     * @return Nothing.
+     * 
+     */    
     public void updateThreateningLocations()
     {
         super.getThreateningLocations().clear();

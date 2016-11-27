@@ -12,6 +12,7 @@ public class Pawn extends ChessPiece
 
     /**
      * Constructor sets the owner, current game, the inital locaiton, the first move status and the character ID of the Pawn
+     * Also sets the inital threatening locations for the pawn
      * 
      * @param player A String that corresponds the the owner of the Pawn
      * @param game The ChessGame that the Pawn is a part of
@@ -31,11 +32,13 @@ public class Pawn extends ChessPiece
 
     /**
      * The Pawn can move forward one square at a time or two if it is their first move
+     * If there is an opponents piece on a single diagonal then it can capture that piece
      * Method checks if the move is legal and if it is, moves the Pawn on the board
      * 
-     * @param newLocation The proposed location where the Pawn is to be moved to
+     * @param newLocation The proposed ChessLocation where the Pawn is to be moved to
+     * @param isThreat if isThreat is true the move is not actually taken just the return value is wanted
      * 
-     * @return Nothing.
+     * @return boolean true if the move was successful 
      * 
      */
     public boolean moveTo(ChessLocation newLocation, boolean isThreat)
@@ -74,6 +77,14 @@ public class Pawn extends ChessPiece
         return false;
     }
     
+    /**
+     * Fills the threateningLocations ArrayList with locations that the pawn threatens
+     * 
+     * @param Nothing.
+     * 
+     * @return Nothing.
+     * 
+     */
     public void updateThreateningLocations()
     {
         super.getThreateningLocations().clear();

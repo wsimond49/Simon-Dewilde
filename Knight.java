@@ -8,6 +8,7 @@ public class Knight extends ChessPiece
 {
     /**
      * Constructor sets the owner, current game, the inital locaiton and the character ID of the Knight
+     * Also sets the inital threatening locations for the knight
      * 
      * @param player A String that corresponds the the owner of the Knight
      * @param game The ChessGame that the Knight is a part of
@@ -27,9 +28,10 @@ public class Knight extends ChessPiece
      * The Knight can only move in a 2,1 or 1,2 pattern  
      * Method checks if the move is legal and if it is, moves the Knight on the board
      * 
-     * @param newLocation The proposed location where the Knight is to be moved to
+     * @param newLocation The proposed ChessLocation where the Knight is to be moved to
+     * @param isThreat if isThreat is true the move is not actually taken just the return value is wanted
      * 
-     * @return Nothing.
+     * @return boolean true if the move was successful
      * 
      */
     public boolean moveTo(ChessLocation newLocation, boolean isThreat)
@@ -46,6 +48,14 @@ public class Knight extends ChessPiece
         return false;
     }
     
+    /**
+     * Fills the threateningLocations ArrayList with locations that the knight threatens
+     * 
+     * @param Nothing.
+     * 
+     * @return Nothing.
+     * 
+     */
     public void updateThreateningLocations()
     {
         super.getThreateningLocations().clear();

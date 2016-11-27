@@ -12,7 +12,7 @@ public class ChessGame
     private String player2;
 
     /**
-     * Constructor creates a new ChessBoard object and all of the black pieces then places them on the board at their initial position
+     * Constructor creates a new ChessBoard object and all of the pieces then places them on the board at their initial position
      * 
      * @param player1 A String that corresponds to the colour of player1
      * @param player2 A String that corresponds to the colour of player2

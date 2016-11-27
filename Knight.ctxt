@@ -1,10 +1,11 @@
 #BlueJ class context
 comment0.params=player\ game\ initialLocation
 comment0.target=Knight(java.lang.String,\ ChessGame,\ ChessLocation)
-comment0.text=\r\n\ Constructor\ sets\ the\ owner,\ current\ game,\ the\ inital\ locaiton\ and\ the\ character\ ID\ of\ the\ Knight\r\n\ \r\n\ @param\ player\ A\ String\ that\ corresponds\ the\ the\ owner\ of\ the\ Knight\r\n\ @param\ game\ The\ ChessGame\ that\ the\ Knight\ is\ a\ part\ of\r\n\ @param\ initialLocation\ A\ ChessLocation\ where\ the\ piece\ is\ to\ be\ placed\ at\ the\ begining\ of\ the\ game\r\n\ \r\n
+comment0.text=\r\n\ Constructor\ sets\ the\ owner,\ current\ game,\ the\ inital\ locaiton\ and\ the\ character\ ID\ of\ the\ Knight\r\n\ Also\ sets\ the\ inital\ threatening\ locations\ for\ the\ knight\r\n\ \r\n\ @param\ player\ A\ String\ that\ corresponds\ the\ the\ owner\ of\ the\ Knight\r\n\ @param\ game\ The\ ChessGame\ that\ the\ Knight\ is\ a\ part\ of\r\n\ @param\ initialLocation\ A\ ChessLocation\ where\ the\ piece\ is\ to\ be\ placed\ at\ the\ begining\ of\ the\ game\r\n\ \r\n
 comment1.params=newLocation\ isThreat
 comment1.target=boolean\ moveTo(ChessLocation,\ boolean)
-comment1.text=\r\n\ The\ Knight\ can\ only\ move\ in\ a\ 2,1\ or\ 1,2\ pattern\ \ \r\n\ Method\ checks\ if\ the\ move\ is\ legal\ and\ if\ it\ is,\ moves\ the\ Knight\ on\ the\ board\r\n\ \r\n\ @param\ newLocation\ The\ proposed\ location\ where\ the\ Knight\ is\ to\ be\ moved\ to\r\n\ \r\n\ @return\ Nothing.\r\n\ \r\n
+comment1.text=\r\n\ The\ Knight\ can\ only\ move\ in\ a\ 2,1\ or\ 1,2\ pattern\ \ \r\n\ Method\ checks\ if\ the\ move\ is\ legal\ and\ if\ it\ is,\ moves\ the\ Knight\ on\ the\ board\r\n\ \r\n\ @param\ newLocation\ The\ proposed\ ChessLocation\ where\ the\ Knight\ is\ to\ be\ moved\ to\r\n\ @param\ isThreat\ if\ isThreat\ is\ true\ the\ move\ is\ not\ actually\ taken\ just\ the\ return\ value\ is\ wanted\r\n\ \r\n\ @return\ boolean\ true\ if\ the\ move\ was\ successful\r\n\ \r\n
 comment2.params=
 comment2.target=void\ updateThreateningLocations()
+comment2.text=\r\n\ Fills\ the\ threateningLocations\ ArrayList\ with\ locations\ that\ the\ knight\ threatens\r\n\ \r\n\ @param\ Nothing.\r\n\ \r\n\ @return\ Nothing.\r\n\ \r\n
 numComments=3

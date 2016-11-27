@@ -10,6 +10,7 @@ public class Queen extends ChessPiece
 
     /**
      * Constructor sets the owner, current game, the inital locaiton and the character ID of the Queen
+     * Also sets the inital threatening locations for the queen
      * 
      * @param player A String that corresponds the the owner of the Queen
      * @param game The ChessGame that the Queen is a part of
@@ -29,9 +30,10 @@ public class Queen extends ChessPiece
      * The Queen can move in any direction and as far as she wishes 
      * Method checks if the move is legal and if it is, moves the Queen on the board
      * 
-     * @param newLocation The proposed location where the Queen is to be moved to
+     * @param newLocation The proposed ChessLocation where the Queen is to be moved to
+     * @param isThreat if isThreat is true the move is not actually taken just the return value is wanted
      * 
-     * @return Nothing.
+     * @return boolean true if the move was successful
      * 
      */
     public boolean moveTo(ChessLocation newLocation, boolean isThreat)
@@ -52,6 +54,14 @@ public class Queen extends ChessPiece
         return false;
     }
     
+    /**
+     * Fills the threateningLocations ArrayList with locations that the queen threatens
+     * 
+     * @param Nothing.
+     * 
+     * @return Nothing.
+     * 
+     */
     public void updateThreateningLocations()
     {
         super.getThreateningLocations().clear();
