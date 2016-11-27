@@ -131,6 +131,7 @@ public class PlayGame
                 System.out.println("\n\nThank you for playing this chess game");
                 System.out.println("Here is the final layout of your chess game");
                 game.getBoard().printBoard();
+                System.out.println("\n\n");
                 try {
                     Thread.sleep(2500);
                 } catch(InterruptedException ex) {
