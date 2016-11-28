@@ -75,7 +75,8 @@ public class PlayGame
                        
                        if (futureRow >= 0 && futureRow <= 7 && futureCol >= 0 && futureCol <= 7){
                            ChessLocation newLocation = new ChessLocation(futureRow, futureCol);
-                           if(game.getBoard().isPieceAt(futureRow, futureCol) && (game.getBoard().getPiece(futureRow, futureCol).getID() == 'K' || game.getBoard().getPiece(futureRow, futureCol).getID() == 'k')){
+                           if(game.getBoard().isPieceAt(futureRow, futureCol) && (game.getBoard().getPiece(futureRow, futureCol).getID() == 'K' || game.getBoard().getPiece(futureRow, futureCol).getID() == 'k') &&
+                           game.getBoard().getPiece(currentRow,currentCol).moveTo(newLocation, true)){
                                game.getBoard().getPiece(currentRow,currentCol).moveTo(newLocation, false);
                                System.out.println(currentPlayer + " is the winner!");
                                getOption(game, "q");
