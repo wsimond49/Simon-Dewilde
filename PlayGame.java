@@ -50,6 +50,7 @@ public class PlayGame
         check(game);
        
         System.out.println("Welcome to Simon Dewilde's Chess game");
+        System.out.println("White pieces are lowercase and Black pieces are UPPERCASE");
         System.out.println("The bottom player (White) will go first");
         
         while (continueGame)
@@ -156,7 +157,7 @@ public class PlayGame
             if (quitCheck.equals("q")){
                  option = quitCheck;
             }else{
-                System.out.println("Would you like to Move(M), Quit(Q), or Restart(R)?");
+                System.out.println("Would you like to (M)ove, (Q)uit, or (R)estart?");
                 Scanner scanner = new Scanner (System.in);
                 option = scanner.next();
             }
