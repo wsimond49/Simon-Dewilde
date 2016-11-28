@@ -159,7 +159,7 @@ public class PlayGame
                 Scanner scanner = new Scanner (System.in);
                 option = scanner.next();
             }
-            option.toLowerCase();
+            option = option.toLowerCase();
             if(option.equals("q")){
                 System.out.println("\n\nThank you for playing this chess game");
                 System.out.println("Here is the final layout of your chess game");
