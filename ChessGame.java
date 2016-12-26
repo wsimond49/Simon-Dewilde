@@ -8,8 +8,6 @@
 public class ChessGame
 {
     private ChessBoard board;
-    private String player1;
-    private String player2;
 
     /**
      * Constructor creates a new ChessBoard object and all of the pieces then places them on the board at their initial position
@@ -19,10 +17,7 @@ public class ChessGame
      * 
      */
     public ChessGame(String player1, String player2)
-    {
-        this.player1 = new String(player1);
-        this.player2 = new String(player2);
-        
+    {        
         board = new ChessBoard();
         
         Rook R1 = new Rook(player1, this, new ChessLocation(0,0));

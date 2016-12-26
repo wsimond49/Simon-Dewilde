@@ -43,7 +43,7 @@ public class Rook extends ChessPiece
                 return true;
             }           
         }else if(!isThreat){
-            System.out.println("This move is not valid");
+            //System.out.println("This move is not valid");
         }
         return false;
     }

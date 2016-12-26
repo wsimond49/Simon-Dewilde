@@ -72,6 +72,17 @@ public class ChessBoard
         return false;
     }
     
+    public boolean isPieceAt(ChessLocation location){
+    	if (location.getRow() >= 0 && location.getRow() <= 7 && location.getCol() >=0 && location.getCol() <=7){
+            if (board[location.getRow()][location.getCol()] != null)
+            {
+                return true;
+            }
+        }
+        return false;
+    	
+    }
+    
     /**
      * Method returns the ChessPiece object at a given location
      * 
@@ -87,6 +98,13 @@ public class ChessBoard
             return board[row][col];
         }
         return null;
+    }
+    
+    public ChessPiece getPiece (ChessLocation location){
+    	if (location.getRow() >= 0 && location.getRow() <= 7 && location.getCol() >=0 && location.getCol() <=7){
+    		return board[location.getRow()][location.getCol()];
+    	}
+    	return null;
     }
     
     /**
