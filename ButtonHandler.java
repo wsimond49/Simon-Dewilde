@@ -24,10 +24,9 @@ public class ButtonHandler implements ActionListener {
 		this.col = col;
 		this.game = game;
 		this.buttons = buttons;
-		if (game.getBoard().isPieceAt(row, col) && game.getBoard().getPiece(row, col).getPlayer().equals("Black")){
-			button.setForeground(Color.GRAY);
-			//button.setOpaque(true);
-			button.setBorderPainted(false);
+		if (game.getBoard().isPieceAt(row, col) && game.getBoard().getPiece(row, col).getPlayer().equals("White")){
+			button.setForeground(Color.LIGHT_GRAY);
+			button.setOpaque(true);
 		}
 	}
 	
@@ -74,8 +73,17 @@ public class ButtonHandler implements ActionListener {
 			for (int j = 0; j < 8; j++){
 				if (game.getBoard().isPieceAt(i,j)){
 					buttons[i][j].setText(Character.toString(game.getBoard().getPiece(i, j).getID()));
+					if (game.getBoard().isPieceAt(row, col) && game.getBoard().getPiece(row, col).getPlayer().equals("White")){
+						button.setForeground(Color.LIGHT_GRAY);
+						button.setOpaque(true);
+					}else if (game.getBoard().isPieceAt(row, col) && game.getBoard().getPiece(row, col).getPlayer().equals("Black")){
+						button.setForeground(Color.BLACK);
+						button.setOpaque(true);
+					}
 				}else{
 					buttons[i][j].setText("");
+					button.setForeground(Color.BLACK);
+					button.setOpaque(true);
 				}
 			}
 		}
