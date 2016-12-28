@@ -33,7 +33,7 @@ public class ChessFame {
 		game = new ChessGame ("Black","White");
 		
 		JPanel playerPanel = new JPanel();
-		JLabel currentPlayerLabel = new JLabel("Welcome to the chess game");
+		JLabel currentPlayerLabel = new JLabel("Welcome to the chess game, bottom goes first");
 		playerPanel.add(currentPlayerLabel);
 		JPanel warningPanel = new JPanel();
 		JLabel warningsLabel = new JLabel("Warnings: none");

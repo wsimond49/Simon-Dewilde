@@ -1,5 +1,4 @@
 import javax.swing.*;
-
 import java.awt.Color;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -141,16 +140,9 @@ public class ButtonHandler implements ActionListener {
 		}
 	}
 	
+	
+	
 	private void winner(){
-		/*
-		System.out.println("Checking for winner");
-		if(game.getBoard().isPieceAt(row, col) && (game.getBoard().getPiece(row, col).getID() == 'K' || game.getBoard().getPiece(row, col).getID() == 'k') &&
-				game.getBoard().getPiece(lastPressed.get(0).getRow(),lastPressed.get(0).getCol()).moveTo(new ChessLocation(row,col), true)){
-			System.out.println("Passed if");
-			game.getBoard().getPiece(lastPressed.get(0).getRow(),lastPressed.get(0).getCol()).moveTo(new ChessLocation(row,col), false);
-			warningsLabel.setText(button.getName() + " is the winner!");
-		}
-		*/
 		ArrayList<Integer> x = new ArrayList<Integer>();
 		for (int i = 0; i < 8; i++){
 			for (int j = 0; j < 8; j++){
