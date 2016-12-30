@@ -3,14 +3,14 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.ArrayList;
 
-public class ChessFame {
+public class ChessFrame {
 	
 	private JFrame frame;
 	private JButton buttons[][];
 	private ChessGame game;
 	private ArrayList<ChessLocation> lastPressed;
 	
-	public ChessFame(){
+	public ChessFrame(){
 		buttons = new JButton[8][8];
 		lastPressed = new ArrayList<ChessLocation>();
 		makeFrame();

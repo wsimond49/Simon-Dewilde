@@ -38,7 +38,6 @@ public class ButtonHandler implements ActionListener {
 		}else if (!lastPressed.isEmpty() || game.getBoard().getPiece(row,col).getPlayer().equals(button.getName())){
 			
 			if (lastPressed.isEmpty()){
-				warningsLabel.setText("Warnings: none");
 				lastPressed.add(new ChessLocation(row,col));
 				button.setEnabled(false);
 			}else{
@@ -129,9 +128,9 @@ public class ButtonHandler implements ActionListener {
 					for (ChessLocation kingCheck : game.getBoard().getPiece(i,j).getThreateningLocations()){
 						if (game.getBoard().isPieceAt(kingCheck.getRow(),kingCheck.getCol())){
 							if (game.getBoard().getPiece(kingCheck.getRow(), kingCheck.getCol()).getID() == 'K'){
-								warningsLabel.setText("Warnings: The white king is in check by the piece at " + i + "," + j);
+								warningsLabel.setText("Warnings: The Black king is in check by the piece at " + i + "," + j);
 							}else if (game.getBoard().getPiece(kingCheck.getRow(), kingCheck.getCol()).getID() == 'k'){
-								warningsLabel.setText("Warnings: The black king is in check by the piece at " + i + "," + j);
+								warningsLabel.setText("Warnings: The White king is in check by the piece at " + i + "," + j);
 							}
 						}
 					}
